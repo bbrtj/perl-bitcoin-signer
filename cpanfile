@@ -5,4 +5,5 @@ requires 'Moo';
 requires 'Mooish::AttributeBuilder';
 requires 'Type::Tiny';
 requires 'Try::Tiny';
+requires 'Term::ReadKey';
 

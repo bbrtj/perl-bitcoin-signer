@@ -3,6 +3,7 @@ package Signer::Role::HasMasterKey;
 use v5.38;
 
 use Moo::Role;
+use Bitcoin::Crypto qw(btc_extprv);
 
 requires qw(
 	config

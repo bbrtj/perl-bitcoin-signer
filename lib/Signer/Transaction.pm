@@ -5,7 +5,7 @@ use Moo;
 use Mooish::AttributeBuilder;
 use Types::Common qw(InstanceOf HashRef);
 use Try::Tiny;
-use Bitcoin::Crypto qw(btc_extprv btc_transaction);
+use Bitcoin::Crypto qw(btc_transaction);
 use Bitcoin::Crypto::Network;
 use Bitcoin::Crypto::Bech32 qw(get_hrp);
 use Bitcoin::Crypto::Base58 qw(decode_base58check);

@@ -10,3 +10,8 @@ account: 0
 signer_host: 127.0.0.1
 signer_port: 3000
 
+# client - run get-pubs command and fill those
+xpub: xpub6DTAptomKQ1wjniNHkd3dXz9wRPXzs1ACHYnezMUdZAhKozdZNsgx58x8R7g3zuA5Db3pwSEhSLnYBcU7CmWnzTweYxvYnULDxs1ejUSJMW
+ypub: ypub6XPtgXJ73eMJbVP5HuVGmtvZynbHfGLJdgSFf3hdGuiBpJUwEjvCeMSjGB2p5WiUHMEmXX6su2awWFHAuUPWYgqJssaWLp9DEj51cFQcWCz
+zpub: zpub6s1eJiZu7PzTi3nJZxUXcu8odbbcSZh54ofqAMW3AyEz4EtSYWxsunK9N8UsGSCgJtxxFJoPKePbvsG5nKTcfLSmSximvASns3w1ftYYNMq
+

@@ -20,6 +20,8 @@ has param 'input' => (
 		->plus_coercions(HashRef, q{ Signer::Input->new($_) }),
 );
 
+with qw(Signer::Role::HasMasterKey);
+
 sub get_pubs ($self)
 {
 	my @purposes = qw(44 49 84);

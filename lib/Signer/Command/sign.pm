@@ -1,4 +1,4 @@
-package Signer::Command::client;
+package Signer::Command::sign;
 
 use v5.38;
 
@@ -28,7 +28,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  Usage: APPLICATION client [CLIENT_SCRIPT]
+	Usage: APPLICATION sign [CLIENT_SCRIPT]
 
-  Needs signer_host and signer_port configured in signer.yml.
+	Needs signer_host and signer_port configured in signer.yml.
 

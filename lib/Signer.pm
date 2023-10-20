@@ -8,14 +8,11 @@ use Try::Tiny;
 use Bitcoin::Crypto::Util qw(to_format);
 
 use Signer::Transaction;
+use Signer::General;
 
 extends 'Mojolicious';
 
-has field 'signer_config' => (
-	lazy => sub ($self) {
-		return $self->plugin('NotYAMLConfig');
-	},
-);
+with 'Signer::Role::HasConfig';
 
 sub startup ($self)
 {
