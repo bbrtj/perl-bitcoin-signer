@@ -10,9 +10,7 @@ use Bitcoin::Crypto::Network;
 use Bitcoin::Crypto::Bech32 qw(get_hrp);
 use Bitcoin::Crypto::Base58 qw(decode_base58check);
 
-use Signer::Input;
-
-use constant SEARCH_RANGE => 20;
+use Signer::Input::Transaction;
 
 has param 'parent' => (
 	isa => InstanceOf ['Signer'],
@@ -22,21 +20,11 @@ has param 'parent' => (
 );
 
 has param 'input' => (
-	coerce => (InstanceOf ['Signer::Input'])
-		->plus_coercions(HashRef, q{ Signer::Input->new($_) }),
+	coerce => (InstanceOf ['Signer::Input::Transaction'])
+		->plus_coercions(HashRef, q{ Signer::Input::Transaction->new($_) }),
 );
 
-sub master_key ($self, $purpose)
-{
-	my $cfg = $self->config;
-	return btc_extprv
-		->from_mnemonic($cfg->{master_key}, $self->input->password)
-		->derive_key_bip44(
-			get_account => 1,
-			purpose => $purpose,
-			account => $cfg->{account},
-		);
-}
+with qw(Signer::Role::HasMasterKey);
 
 sub get_excess_sats ($self, $tx, $fee_rate)
 {
@@ -49,15 +37,16 @@ sub get_excess_sats ($self, $tx, $fee_rate)
 
 sub get_change_key ($self)
 {
-	my $acc_key = $self->master_key(84);
-	return $acc_key->derive_key_bip44(
-		get_from_account => 1,
-		change => 1,
-		index => $self->input->change_index,
-	);
+	my $change = $self->input->change;
+	die 'no change address specified'
+		unless defined $change;
+
+	# dies if not found
+	$self->find_key($change, change => 1);
+	return $change;
 }
 
-sub find_key ($self, $address)
+sub find_key ($self, $address, %opts)
 {
 	my %checks = (
 		84 => sub ($network, $address) {
@@ -83,16 +72,32 @@ sub find_key ($self, $address)
 
 	die "unknown address type $address" unless defined $purpose;
 
-	my $acc_key = $self->master_key($purpose);
-	my $search_start = $self->input->address_search_start;
-	foreach my $ind ($search_start .. $search_start + SEARCH_RANGE) {
-		my $key = $acc_key->derive_key_bip44(
-			get_from_account => 1,
-			index => $ind
-		);
+	my $input = $self->input;
+	my @config = (
+		($opts{change} ? () : {
+			change => 0,
+			from => $input->address_search_from,
+			to => $input->address_search_to,
+		}),
+		{
+			change => 1,
+			from => $input->change_search_from,
+			to => $input->change_search_to,
+		},
+	);
 
-		return $key
-			if $key->get_public_key->get_address eq $address;
+	my $acc_key = $self->master_key($purpose);
+	for my $conf (@config) {
+		foreach my $ind ($conf->{from} .. $conf->{to}) {
+			my $key = $acc_key->derive_key_bip44(
+				get_from_account => 1,
+				change => $conf->{change},
+				index => $ind,
+			);
+
+			return $key
+				if $key->get_public_key->get_address eq $address;
+		}
 	}
 
 	die "address $address not found in this master key";
@@ -123,24 +128,28 @@ sub get_tx ($self)
 		$tx->add_output($output);
 	}
 
-	# presign to get size and adjust the fee
-	sign;
-	my $excess_fee = $self->get_excess_sats($tx, $input->fee_rate);
+	$tx->set_rbf;
 
-	if ($excess_fee > $tx->virtual_size) {
-		# add change address, but keep in mind it will make the
-		# transaction slightly bigger, so only do it if excess sats are
-		# more than transaction virtual size
-		my $prv = $self->get_change_key;
-		push @keys, $prv;
+	if ($input->chane) {
 
-		$tx->add_output(
-			locking_script => [P2WPKH => $prv->get_public_key->get_address],
-			value => $excess_fee - 35, # approximate 35 vbytes for the output
-		);
-	}
-	elsif ($excess_fee < 0) {
-		die 'not enough value left for fee';
+		# presign to get size and adjust the fee
+		sign;
+
+		my $excess_fee = $self->get_excess_sats($tx, $input->fee_rate);
+
+		if ($excess_fee > $tx->virtual_size) {
+			# add change address, but keep in mind it will make the
+			# transaction slightly bigger, so only do it if excess sats are
+			# more than transaction virtual size
+			my $prv = $self->get_change_key;
+			$tx->add_output(
+				locking_script => [P2WPKH => $prv->get_public_key->get_address],
+				value => $excess_fee - 35, # approximate 35 vbytes for the output
+			);
+		}
+		elsif ($excess_fee < 0) {
+			die 'not enough value left for fee';
+		}
 	}
 
 	# final signing
