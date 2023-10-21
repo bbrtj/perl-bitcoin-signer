@@ -142,6 +142,9 @@ sub get_last_script_args ($self)
 			$address = $self->get_address(!!1, $head->{state}{change}++);
 			push $args{self_outputs}->@*, $output_index;
 		}
+		elsif ($output->{check}) {
+			push $args{self_outputs}->@*, $output_index;
+		}
 
 		if ($is_change) {
 			$args{change} = $address;
@@ -165,18 +168,22 @@ sub get_last_script_args ($self)
 sub run ($self, @args)
 {
 	my $password = $self->read_password;
+	my $params = $self->get_last_script_args;
 	my $result = $self->do_post('/sign',
 		password => $password,
-		$self->get_last_script_args->%*,
+		$params->%*,
 	);
 
 	my $tx = btc_transaction->from_serialized([hex => $result]);
 	$tx->verify;
 	say $tx->dump;
-	say $result;
+	say "checked outputs $params->{self_outputs}->@*"
+		if $params->{self_outputs}->@*;
 
+	say $result;
 	print 'broadcast this transaction? Type YES to proceed: ';
 	my $answer = readline STDIN;
+
 	chomp $answer;
 	if ($answer eq 'YES') {
 		say 'txid: ' . $self->post_transaction($tx);

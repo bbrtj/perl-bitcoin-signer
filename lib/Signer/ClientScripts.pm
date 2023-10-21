@@ -46,6 +46,7 @@ sub _parse ($self, $file)
 		push @outputs, {
 			value => $output->attr('value'),
 			address => $output->text,
+			check => exists $output->attr->{check},
 		};
 	}
 
