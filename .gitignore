@@ -1,2 +1,4 @@
 signer.yml
+transactions/*
+!transactions/*.example
 

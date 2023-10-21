@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transaction>
+	<!-- sat per vB -->
+	<fee_rate>15</fee_rate>
+	<inputs>
+		<input index="0">e0a273b03534b6217ad161397617c6342d4ae8add59e7b01b73cb29c7d64b7dc</input>
+	</inputs>
+	<outputs>
+		<output value="10000">bc1q68z96qq89gz6x6dad4fha7j38fjkvr0wqg6ulh</output>
+		<!-- change spends the rest, but not to change address -->
+		<!-- can also provide new_change address -->
+		<output value="change">new_address</output>
+	</outputs>
+
+	<!-- if you need to skip some addresses, use this -->
+	<skip_addresses>5</skip_addresses>
+</transaction>
+

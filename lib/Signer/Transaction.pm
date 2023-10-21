@@ -4,12 +4,9 @@ use v5.38;
 use Moo;
 use Mooish::AttributeBuilder;
 use Types::Common qw(InstanceOf HashRef);
-use Try::Tiny;
 use Bitcoin::Crypto qw(btc_transaction);
-use Bitcoin::Crypto::Network;
-use Bitcoin::Crypto::Bech32 qw(get_hrp);
-use Bitcoin::Crypto::Base58 qw(decode_base58check);
 
+use Signer::Util;
 use Signer::Input::Transaction;
 
 has param 'parent' => (
@@ -32,7 +29,8 @@ sub get_excess_sats ($self, $tx, $fee_rate)
 	my $current_fee_rate = $tx->fee_rate;
 	my $excess_sats = $size * ($current_fee_rate - $fee_rate);
 
-	return $excess_sats;
+	# gets bigint from bigfloat
+	return $excess_sats->as_number;
 }
 
 sub get_change_key ($self)
@@ -48,29 +46,13 @@ sub get_change_key ($self)
 
 sub find_key ($self, $address, %opts)
 {
-	my %checks = (
-		84 => sub ($network, $address) {
-			return $network->segwit_hrp eq get_hrp($address);
-		},
-		49 => sub ($network, $address) {
-			return $network->p2sh_byte eq unpack 'C', decode_base58check $address;
-		},
-		44 => sub ($network, $address) {
-			return $network->p2pkh_byte eq unpack 'C', decode_base58check $address;
-		},
+	my $type = Signer::Util::get_address_type($address);
+	my %purpose_map = (
+		P2PKH => 44,
+		P2SH => 49,
+		P2WPKH => 84,
 	);
-
-	my $network = Bitcoin::Crypto::Network->get_default;
-	my $purpose;
-	foreach my $result (keys %checks) {
-		my $check = $checks{$result};
-
-		try {
-			$purpose = $result if $check->($network, $address);
-		};
-	}
-
-	die "unknown address type $address" unless defined $purpose;
+	my $purpose = $purpose_map{$type};
 
 	my $input = $self->input;
 	my @config = (
@@ -93,7 +75,7 @@ sub find_key ($self, $address, %opts)
 				get_from_account => 1,
 				change => $conf->{change},
 				index => $ind,
-			);
+			)->get_basic_key;
 
 			return $key
 				if $key->get_public_key->get_address eq $address;
@@ -130,30 +112,45 @@ sub get_tx ($self)
 
 	$tx->set_rbf;
 
-	if ($input->chane) {
+	if ($input->change) {
 
 		# presign to get size and adjust the fee
 		sign;
 
 		my $excess_fee = $self->get_excess_sats($tx, $input->fee_rate);
-
-		if ($excess_fee > $tx->virtual_size) {
+		if ($excess_fee > int($tx->virtual_size)) {
 			# add change address, but keep in mind it will make the
 			# transaction slightly bigger, so only do it if excess sats are
 			# more than transaction virtual size
-			my $prv = $self->get_change_key;
+			my $change = $self->input->change;
 			$tx->add_output(
-				locking_script => [P2WPKH => $prv->get_public_key->get_address],
-				value => $excess_fee - 35, # approximate 35 vbytes for the output
+				locking_script => [Signer::Util::get_address_type($change), $change],
+				value => 0,
 			);
-		}
-		elsif ($excess_fee < 0) {
-			die 'not enough value left for fee';
+
+			my $output = $tx->outputs->[-1];
+			my $output_size = length $output->to_serialized;
+
+			# reduce value by output size times fee rate
+			$output->set_value($excess_fee - $output_size * $input->fee_rate);
 		}
 	}
 
 	# final signing
 	sign;
+
+	# final checks
+	my $fee_diff = $tx->fee_rate - $input->fee_rate;
+	die "fee rate vastly differs from desired fee rate ($fee_diff)"
+		if abs($fee_diff) > 1;
+
+	foreach my $output_index ($input->self_outputs->@*) {
+		die "no output $output_index"
+			unless $tx->outputs->[$output_index];
+		# will die if the address is not found in this master key
+		$self->find_key($tx->outputs->[$output_index]->locking_script->get_address);
+	}
+
 	return $tx;
 }
 

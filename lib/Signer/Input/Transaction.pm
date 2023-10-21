@@ -55,6 +55,11 @@ has param 'outputs' => (
 		)],
 );
 
+has param 'self_outputs' => (
+	isa => ArrayRef[PositiveOrZeroInt],
+	default => sub { [] },
+);
+
 has param 'fee_rate' => (
 	isa => PositiveNum->where(q{ $_ > 1 }),
 );

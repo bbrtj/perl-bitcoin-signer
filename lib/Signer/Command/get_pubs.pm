@@ -4,7 +4,6 @@ use v5.38;
 
 use Moo;
 use Mooish::AttributeBuilder;
-use Mojo::UserAgent;
 
 extends 'Mojolicious::Command';
 
@@ -23,29 +22,16 @@ has field 'usage' => (
 with qw(
 	Signer::Role::HasConfig
 	Signer::Role::ReadsPasswords
+	Signer::Role::QueriesAPI
 );
 
 sub run ($self, @args)
 {
-	my $ua = Mojo::UserAgent->new;
-	my $cfg = $self->signer_config;
-	my $passwd = $self->read_password;
-
-	my $http_tx = $ua->post(
-		"$cfg->{signer_host}:$cfg->{signer_port}/pubs",
-		json => { password => $passwd }
+	my $result = $self->do_post('/pubs',
+		password => scalar $self->read_password,
 	);
 
-	my $res = $http_tx->result;
-	die 'Got HTTP error: ' . $res->message if $res->is_error;
-	my $data = $res->json;
-
-	if (!$data->{status}) {
-		die 'Got error: ' . $data->{error};
-	}
-	else {
-		say $_ for $data->{result}->@*;
-	}
+	say $_ for $result->@*;
 }
 
 __END__

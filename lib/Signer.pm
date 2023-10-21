@@ -6,6 +6,7 @@ use Mooish::AttributeBuilder;
 use Mojo::JSON qw(decode_json);
 use Try::Tiny;
 use Bitcoin::Crypto::Util qw(to_format);
+use Bitcoin::Crypto::Network;
 
 use Signer::Transaction;
 use Signer::General;
@@ -17,6 +18,9 @@ with 'Signer::Role::HasConfig';
 sub startup ($self)
 {
 	$self->secrets($self->signer_config->{secrets});
+	Bitcoin::Crypto::Network->get('bitcoin_testnet')->set_default
+		unless fc $self->signer_config->{mode} eq fc 'production';
+
 	push @{$self->commands->namespaces}, 'Signer::Command';
 
 	my $r = $self->routes;
