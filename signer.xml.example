@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<field name="mode">development</field>
+	<field name="secrets">72f3aff25cd81bb7a729c595a746b4575e168371</field>
+
+	<!-- server -->
+	<field name="master_key">equal runway into girl sell clown marriage museum hurdle trim what service swift pulse adjust hover achieve burst bread fog maze cream because phone</field>
+	<field name="account">0</field>
+	<!-- server password (not a password to bip39) -->
+	<field name="password">signer</field>
+
+	<!-- client -->
+	<field name="signer_host">127.0.0.1</field>
+	<field name="signer_port">3000</field>
+
+	<!-- client - run get-pubs command and fill this (for addresses and changes) -->
+	<field name="zpub">vpub5ZqRyvYbqfDTCLefa3YyuCQBUou5AHmmcm9vLCX89ZzJFtw1uk193jzXj6SEKDaGdV7xJYP8PouEejMUstnboLqBzaNouBYjx75uGaxgxkz</field>
+
+</config>
+

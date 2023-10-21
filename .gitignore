@@ -1,4 +1,4 @@
-signer.yml
+signer.xml
 transactions/*
 !transactions/*.example
 

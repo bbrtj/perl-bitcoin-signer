@@ -19,6 +19,9 @@ with qw(
 
 sub startup ($self)
 {
+	# always production, to avoid configuration dumps on the main page
+	$self->mode('production');
+
 	$self->secrets($self->signer_config->{secrets});
 	Bitcoin::Crypto::Network->get('bitcoin_testnet')->set_default
 		unless fc $self->signer_config->{mode} eq fc 'production';
