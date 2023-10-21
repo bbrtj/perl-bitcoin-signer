@@ -34,10 +34,10 @@ sub get_address_type ($address, $network = Bitcoin::Crypto::Network->get)
 				;
 		},
 		P2SH => sub ($network, $address) {
-			return $network->p2sh_byte eq unpack 'C', decode_base58check $address;
+			return $network->p2sh_byte eq substr decode_base58check($address), 0, 1;
 		},
 		P2PKH => sub ($network, $address) {
-			return $network->p2pkh_byte eq unpack 'C', decode_base58check $address;
+			return $network->p2pkh_byte eq substr decode_base58check($address), 0, 1;
 		},
 	};
 
