@@ -61,6 +61,6 @@ has param 'self_outputs' => (
 );
 
 has param 'fee_rate' => (
-	isa => PositiveNum->where(q{ $_ > 1 }),
+	isa => PositiveNum->where(q{ $_ >= 1 }),
 );
 
