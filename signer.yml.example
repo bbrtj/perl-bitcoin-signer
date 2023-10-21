@@ -9,6 +9,9 @@ secrets:
 master_key: equal runway into girl sell clown marriage museum hurdle trim what service swift pulse adjust hover achieve burst bread fog maze cream because phone
 account: 0
 
+# server password (not a password to bip39)
+password: signer
+
 # client
 signer_host: 127.0.0.1
 signer_port: 3000

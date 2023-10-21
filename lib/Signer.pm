@@ -3,7 +3,6 @@ package Signer;
 use v5.38;
 use Moo;
 use Mooish::AttributeBuilder;
-use Mojo::JSON qw(decode_json);
 use Try::Tiny;
 use Bitcoin::Crypto::Util qw(to_format);
 use Bitcoin::Crypto::Network;
@@ -13,7 +12,10 @@ use Signer::General;
 
 extends 'Mojolicious';
 
-with 'Signer::Role::HasConfig';
+with qw(
+	Signer::Role::HasConfig
+	Signer::Role::Checksums
+);
 
 sub startup ($self)
 {
@@ -26,25 +28,23 @@ sub startup ($self)
 	my $r = $self->routes;
 
 	$r->post('/sign' => sub ($c) {
-		return $self->sign($c);
+		return $self->run_with_body($c, 'sign');
 	});
 
 	$r->post('/pubs' => sub ($c) {
-		return $self->pubs($c);
+		return $self->run_with_body($c, 'pubs');
 	});
 }
 
-sub sign ($self, $c)
+sub run_with_body ($self, $c, $func)
 {
-	my $tx;
+	my $returned;
 	my $error;
 	try {
-		my $signer = Signer::Transaction->new(
-			parent => $self,
-			input => scalar decode_json($c->req->body),
-		);
+		my $pwd = $self->signer_config->{password};
+		my $body = $self->decode_body($pwd, $c->req->body);
 
-		$tx = $signer->get_tx();
+		$returned = $self->$func($c, $body);
 	}
 	catch {
 		$error = $_;
@@ -54,35 +54,31 @@ sub sign ($self, $c)
 	return $c->render(json => {
 		status => $success,
 		($success
-			? (result => to_format [hex => $tx->to_serialized])
+			? (result => $returned)
 			: (error => $error)
 		),
 	});
 }
 
-sub pubs ($self, $c)
+sub sign ($self, $c, $body)
 {
-	my $pubs;
-	my $error;
-	try {
-		my $gen = Signer::General->new(
-			parent => $self,
-			input => scalar decode_json($c->req->body),
-		);
+	my $signer = Signer::Transaction->new(
+		parent => $self,
+		input => $body,
+	);
 
-		$pubs = $gen->get_pubs;
-	}
-	catch {
-		$error = $_;
-	};
+	my $tx = $signer->get_tx();
+	return to_format [hex => $tx->to_serialized]
+}
 
-	my $success = !defined $error;
-	return $c->render(json => {
-		status => $success,
-		($success
-			? (result => $pubs)
-			: (error => $error)
-		),
-	});
+sub pubs ($self, $c, $body)
+{
+	my $gen = Signer::General->new(
+		parent => $self,
+		input => $body,
+	);
+
+	return $gen->get_pubs;
+
 }
 

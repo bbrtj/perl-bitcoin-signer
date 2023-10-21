@@ -5,9 +5,9 @@ use v5.38;
 use Moo::Role;
 use Term::ReadKey;
 
-sub read_password ($self)
+sub read_password ($self, $type)
 {
-	print 'Please provide a wallet password: ';
+	print "Please provide a $type password: ";
 	ReadMode 'noecho';
 	my $passwd = readline STDIN;
 	ReadMode 'restore';

@@ -28,7 +28,8 @@ with qw(
 sub run ($self, @args)
 {
 	my $result = $self->do_post('/pubs',
-		password => scalar $self->read_password,
+		signer_password => scalar $self->read_password('system'),
+		password => scalar $self->read_password('wallet'),
 	);
 
 	say $_ for $result->@*;

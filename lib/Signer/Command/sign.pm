@@ -167,17 +167,17 @@ sub get_last_script_args ($self)
 
 sub run ($self, @args)
 {
-	my $password = $self->read_password;
 	my $params = $self->get_last_script_args;
 	my $result = $self->do_post('/sign',
-		password => $password,
+		signer_password => $self->read_password('system'),
+		password => $self->read_password('wallet'),
 		$params->%*,
 	);
 
 	my $tx = btc_transaction->from_serialized([hex => $result]);
 	$tx->verify;
 	say $tx->dump;
-	say "checked outputs $params->{self_outputs}->@*"
+	say "checked outputs: <$params->{self_outputs}->@*>"
 		if $params->{self_outputs}->@*;
 
 	say $result;

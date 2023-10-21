@@ -9,14 +9,19 @@ requires qw(
 	signer_config
 );
 
+with qw(
+	Signer::Role::Checksums
+);
+
 sub do_post ($self, $address, %params)
 {
+	my $pwd = delete $params{signer_password};
 	my $ua = Mojo::UserAgent->new;
 	my $cfg = $self->signer_config;
 
 	my $http_tx = $ua->post(
 		"$cfg->{signer_host}:$cfg->{signer_port}$address",
-		json => \%params,
+		$self->encode_body($pwd, \%params),
 	);
 
 	my $res = $http_tx->result;
