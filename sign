@@ -1,0 +1,3 @@
+#!/bin/sh
+jrun . MOJO_INACTIVITY_TIMEOUT=180 script/signer sign
+

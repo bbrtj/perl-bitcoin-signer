@@ -152,7 +152,7 @@ sub get_last_script_args ($self)
 
 		my $nulldata = $address =~ s/^nulldata://;
 		my %params = (
-			locking_script => [($nulldata ? 'address' : 'NULLDATA') => $address],
+			locking_script => [($nulldata ? 'NULLDATA' : 'address') => $address],
 			value => '' . $value,
 		);
 
