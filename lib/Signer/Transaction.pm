@@ -5,8 +5,8 @@ use Moo;
 use Mooish::AttributeBuilder;
 use Types::Common qw(InstanceOf HashRef);
 use Bitcoin::Crypto qw(btc_transaction);
+use Bitcoin::Crypto::Util qw(get_address_type);
 
-use Signer::Util;
 use Signer::Input::Transaction;
 
 has param 'parent' => (
@@ -46,7 +46,7 @@ sub get_change_key ($self)
 
 sub find_key ($self, $address, %opts)
 {
-	my $type = Signer::Util::get_address_type($address);
+	my $type = get_address_type($address);
 	my %purpose_map = (
 		P2PKH => 44,
 		P2SH => 49,
@@ -122,9 +122,8 @@ sub get_tx ($self)
 			# add change address, but keep in mind it will make the
 			# transaction slightly bigger, so only do it if excess sats are
 			# more than transaction virtual size
-			my $change = $self->input->change;
 			$tx->add_output(
-				locking_script => [Signer::Util::get_address_type($change), $change],
+				locking_script => [address => $self->input->change],
 				value => 0,
 			);
 

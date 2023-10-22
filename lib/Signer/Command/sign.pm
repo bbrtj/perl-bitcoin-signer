@@ -8,7 +8,6 @@ use Bitcoin::Crypto qw(btc_transaction btc_extpub btc_utxo);
 use Bitcoin::Crypto::Util qw(to_format);
 use Bitcoin::Crypto::Network;
 use Signer::ClientScripts;
-use Signer::Util;
 use Mojo::UserAgent;
 
 extends 'Mojolicious::Command';
@@ -151,8 +150,9 @@ sub get_last_script_args ($self)
 			next;
 		}
 
+		my $nulldata = $address =~ s/^nulldata://;
 		my %params = (
-			locking_script => [Signer::Util::get_address_type($address), $address],
+			locking_script => [($nulldata ? 'address' : 'NULLDATA') => $address],
 			value => '' . $value,
 		);
 
