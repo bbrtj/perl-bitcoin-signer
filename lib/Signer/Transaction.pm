@@ -131,7 +131,7 @@ sub get_tx ($self)
 			my $output_size = length $output->to_serialized;
 
 			# reduce value by output size times fee rate
-			$output->set_value($excess_fee - $output_size * $input->fee_rate);
+			$output->set_value($excess_fee - int($output_size * $input->fee_rate));
 		}
 	}
 
