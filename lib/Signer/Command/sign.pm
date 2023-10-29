@@ -68,7 +68,7 @@ sub load_utxos ($self, $txid_hex)
 	my $http_tx = $ua->get($self->mempool_api . "/$txid_hex/hex");
 
 	my $res = $http_tx->result;
-	die 'Got mempool HTTP error: ' . $res->message if $res->is_error;
+	die 'Got mempool HTTP error: ' . $res->message . "\n" . $res->content->asset->slurp if $res->is_error;
 
 	btc_utxo->extract([hex => $res->body]);
 	$loaded->{$txid_hex} = !!1;
@@ -82,7 +82,7 @@ sub post_transaction ($self, $tx)
 	my $http_tx = $ua->post($self->mempool_api, to_format [hex => $tx->to_serialized]);
 
 	my $res = $http_tx->result;
-	die 'Got mempool HTTP error: ' . $res->message if $res->is_error;
+	die 'Got mempool HTTP error: ' . $res->message . "\n" . $res->content->asset->slurp if $res->is_error;
 
 	return $res->body;
 }
