@@ -11,7 +11,7 @@ sub read_password ($self, $type)
 	ReadMode 'noecho';
 	my $passwd = readline STDIN;
 	ReadMode 'restore';
-	say ''; # newline
+	say '';    # newline
 
 	chomp $passwd;
 	return $passwd;

@@ -28,13 +28,17 @@ sub startup ($self)
 
 	my $r = $self->routes;
 
-	$r->post('/sign' => sub ($c) {
-		return $self->run_with_body($c, 'sign');
-	});
+	$r->post(
+		'/sign' => sub ($c) {
+			return $self->run_with_body($c, 'sign');
+		}
+	);
 
-	$r->post('/pubs' => sub ($c) {
-		return $self->run_with_body($c, 'pubs');
-	});
+	$r->post(
+		'/pubs' => sub ($c) {
+			return $self->run_with_body($c, 'pubs');
+		}
+	);
 }
 
 sub run_with_body ($self, $c, $func)
@@ -52,13 +56,16 @@ sub run_with_body ($self, $c, $func)
 	}
 
 	my $success = !defined $error;
-	return $c->render(json => {
-		status => $success,
-		($success
-			? (result => $returned)
-			: (error => $error)
-		),
-	});
+	return $c->render(
+		json => {
+			status => $success,
+			(
+				$success
+				? (result => $returned)
+				: (error => $error)
+			),
+		}
+	);
 }
 
 sub sign ($self, $c, $body)
@@ -69,7 +76,7 @@ sub sign ($self, $c, $body)
 	);
 
 	my $tx = $signer->get_tx();
-	return to_format [hex => $tx->to_serialized]
+	return to_format [hex => $tx->to_serialized];
 }
 
 sub pubs ($self, $c, $body)

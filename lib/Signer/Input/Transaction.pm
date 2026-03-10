@@ -35,26 +35,30 @@ has param 'address_search_to' => (
 
 # utxos for input
 has param 'inputs' => (
-	coerce => ArrayRef [(InstanceOf ['Bitcoin::Crypto::Transaction::UTXO'])
+	coerce => ArrayRef [
+		(InstanceOf ['Bitcoin::Crypto::Transaction::UTXO'])
 		->plus_coercions(
 			HashRef, q{
 				Bitcoin::Crypto::Transaction::UTXO->new($_);
 			},
-		)],
+		)
+	],
 );
 
 # outputs
 has param 'outputs' => (
-	coerce => ArrayRef[(InstanceOf ['Bitcoin::Crypto::Transaction::Output'])
+	coerce => ArrayRef [
+		(InstanceOf ['Bitcoin::Crypto::Transaction::Output'])
 		->plus_coercions(
 			HashRef, q{
 				Bitcoin::Crypto::Transaction::Output->new($_);
 			},
-		)],
+		)
+	],
 );
 
 has param 'self_outputs' => (
-	isa => ArrayRef[PositiveOrZeroInt],
+	isa => ArrayRef [PositiveOrZeroInt],
 	default => sub { [] },
 );
 

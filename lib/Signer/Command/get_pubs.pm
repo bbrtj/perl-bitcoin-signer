@@ -8,13 +8,13 @@ extends 'Mojolicious::Command';
 
 has field 'description' => (
 	default => sub {
-		'Get extended public keys from signer',
+		'Get extended public keys from signer',;
 	},
 );
 
 has field 'usage' => (
 	default => sub ($self) {
-		$self->extract_usage,
+		$self->extract_usage,;
 	},
 );
 
@@ -26,7 +26,8 @@ with qw(
 
 sub run ($self, @args)
 {
-	my $result = $self->do_post('/pubs',
+	my $result = $self->do_post(
+		'/pubs',
 		signer_password => scalar $self->read_password('system'),
 		password => scalar $self->read_password('wallet'),
 	);

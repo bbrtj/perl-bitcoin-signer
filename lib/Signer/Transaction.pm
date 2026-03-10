@@ -54,11 +54,13 @@ sub find_key ($self, $address, %opts)
 
 	my $input = $self->input;
 	my @config = (
-		($opts{change} ? () : {
-			change => 0,
-			from => $input->address_search_from,
-			to => $input->address_search_to,
-		}),
+		(
+			$opts{change} ? () : {
+				change => 0,
+				from => $input->address_search_from,
+				to => $input->address_search_to,
+			}
+		),
 		{
 			change => 1,
 			from => $input->change_search_from,
@@ -89,7 +91,8 @@ sub get_tx ($self)
 
 	my $tx = btc_transaction->new;
 	my @keys;
-	my sub sign {
+	my sub sign
+	{
 		foreach my $key_ind (keys @keys) {
 			my $key = $keys[$key_ind];
 			$key->sign_transaction($tx, signing_index => $key_ind);
@@ -97,6 +100,7 @@ sub get_tx ($self)
 	}
 
 	foreach my $utxo ($input->inputs->@*) {
+
 		# find input with master_key (either change or normal)
 		# need info on last used address
 		push @keys, $self->find_key($utxo->output->locking_script->get_address);
@@ -117,6 +121,7 @@ sub get_tx ($self)
 
 		my $excess_fee = $self->get_excess_sats($tx, $input->fee_rate);
 		if ($excess_fee > int($tx->virtual_size)) {
+
 			# add change address, but keep in mind it will make the
 			# transaction slightly bigger, so only do it if excess sats are
 			# more than transaction virtual size
@@ -144,6 +149,7 @@ sub get_tx ($self)
 	foreach my $output_index ($input->self_outputs->@*) {
 		die "no output $output_index"
 			unless $tx->outputs->[$output_index];
+
 		# will die if the address is not found in this master key
 		$self->find_key($tx->outputs->[$output_index]->locking_script->get_address);
 	}

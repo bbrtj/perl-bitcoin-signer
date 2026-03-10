@@ -13,13 +13,13 @@ extends 'Mojolicious::Command';
 
 has field 'description' => (
 	default => sub {
-		'Run signer client on hot device',
+		'Run signer client on hot device';
 	},
 );
 
 has field 'usage' => (
 	default => sub ($self) {
-		$self->extract_usage,
+		$self->extract_usage;
 	},
 );
 
@@ -94,7 +94,7 @@ sub get_last_script_args ($self)
 
 	my %args = (
 		fee_rate => $head->{tx}{fee_rate} // 1,
-		($head->{tx}{change} ? (change => ) : ()),
+		($head->{tx}{change} ? (change =>) : ()),
 		change_search_to => $head->{state}{change} + 20,
 		address_search_to => $head->{state}{address} + 20,
 		inputs => [],
@@ -167,7 +167,8 @@ sub get_last_script_args ($self)
 sub run ($self, @args)
 {
 	my $params = $self->get_last_script_args;
-	my $result = $self->do_post('/sign',
+	my $result = $self->do_post(
+		'/sign',
 		signer_password => $self->read_password('system'),
 		password => $self->read_password('wallet'),
 		$params->%*,
