@@ -1,9 +1,7 @@
 package Signer::Input::Transaction;
 
-use v5.38;
-use Moo;
-use Mooish::AttributeBuilder;
-use Types::Common qw(InstanceOf HashRef ArrayRef PositiveNum SimpleStr PositiveOrZeroInt);
+use v5.40;
+use Mooish::Base;
 
 use Bitcoin::Crypto::Transaction::UTXO;
 use Bitcoin::Crypto::Transaction::Output;

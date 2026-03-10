@@ -1,8 +1,8 @@
 package Signer::Role::HasMasterKey;
 
-use v5.38;
+use v5.40;
 
-use Moo::Role;
+use Mooish::Base -role;
 use Bitcoin::Crypto qw(btc_extprv);
 
 requires qw(

@@ -1,8 +1,8 @@
 package Signer::Role::QueriesAPI;
 
-use v5.38;
+use v5.40;
 
-use Moo::Role;
+use Mooish::Base -role;
 use Mojo::UserAgent;
 
 requires qw(

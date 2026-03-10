@@ -1,9 +1,7 @@
 package Signer;
 
-use v5.38;
-use Moo;
-use Mooish::AttributeBuilder;
-use Try::Tiny;
+use v5.40;
+use Mooish::Base;
 use Bitcoin::Crypto::Util qw(to_format);
 use Bitcoin::Crypto::Network;
 
@@ -49,9 +47,9 @@ sub run_with_body ($self, $c, $func)
 
 		$returned = $self->$func($c, $body);
 	}
-	catch {
-		$error = $_;
-	};
+	catch ($e) {
+		$error = $e;
+	}
 
 	my $success = !defined $error;
 	return $c->render(json => {

@@ -1,8 +1,8 @@
 package Signer::Role::ReadsPasswords;
 
-use v5.38;
+use v5.40;
 
-use Moo::Role;
+use Mooish::Base -role;
 use Term::ReadKey;
 
 sub read_password ($self, $type)

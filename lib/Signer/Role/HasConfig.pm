@@ -1,9 +1,8 @@
 package Signer::Role::HasConfig;
 
-use v5.38;
+use v5.40;
 
-use Moo::Role;
-use Mooish::AttributeBuilder;
+use Mooish::Base -role;
 use Mojo::DOM;
 use Mojo::File qw(path);
 

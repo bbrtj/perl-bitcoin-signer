@@ -1,8 +1,7 @@
 package Signer::ClientScripts;
 
-use v5.38;
-use Moo;
-use Mooish::AttributeBuilder;
+use v5.40;
+use Mooish::Base;
 use Mojo::File qw(path);
 use Mojo::DOM;
 

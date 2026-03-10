@@ -1,10 +1,9 @@
 package Signer::General;
 
-use v5.38;
-use Moo;
-use Mooish::AttributeBuilder;
-use Types::Common qw(InstanceOf HashRef);
+use v5.40;
+use Mooish::Base;
 use Bitcoin::Crypto::Util qw(to_format);
+use Bitcoin::Crypto::Constants ':bip44';
 
 use Signer::Input;
 
@@ -24,7 +23,13 @@ with qw(Signer::Role::HasMasterKey);
 
 sub get_pubs ($self)
 {
-	my @purposes = qw(44 49 84);
+	my @purposes = (
+		BIP44_PURPOSE,
+		BIP44_COMPAT_PURPOSE,
+		BIP44_SEGWIT_PURPOSE,
+		BIP44_TAPROOT_PURPOSE
+	);
+
 	my @pubs = map {
 		to_format [base58 => $self->master_key($_)->get_public_key->to_serialized]
 	} @purposes;

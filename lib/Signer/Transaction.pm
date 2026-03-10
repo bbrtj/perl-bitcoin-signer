@@ -1,9 +1,7 @@
 package Signer::Transaction;
 
-use v5.38;
-use Moo;
-use Mooish::AttributeBuilder;
-use Types::Common qw(InstanceOf HashRef);
+use v5.40;
+use Mooish::Base;
 use Bitcoin::Crypto qw(btc_transaction);
 use Bitcoin::Crypto::Util qw(get_address_type);
 

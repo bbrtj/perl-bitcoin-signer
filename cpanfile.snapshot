@@ -1,0 +1,1011 @@
+# carton snapshot format: version 1.0
+DISTRIBUTIONS
+  Alien-Build-2.84
+    pathname: P/PL/PLICEASE/Alien-Build-2.84.tar.gz
+    provides:
+      Alien::Base 2.84
+      Alien::Base::PkgConfig 2.84
+      Alien::Base::Wrapper 2.84
+      Alien::Build 2.84
+      Alien::Build::CommandSequence 2.84
+      Alien::Build::Helper 2.84
+      Alien::Build::Interpolate 2.84
+      Alien::Build::Interpolate::Default 2.84
+      Alien::Build::Interpolate::Helper 2.84
+      Alien::Build::Log 2.84
+      Alien::Build::Log::Abbreviate 2.84
+      Alien::Build::Log::Default 2.84
+      Alien::Build::MM 2.84
+      Alien::Build::Meta 2.84
+      Alien::Build::Plugin 2.84
+      Alien::Build::Plugin::Build::Autoconf 2.84
+      Alien::Build::Plugin::Build::CMake 2.84
+      Alien::Build::Plugin::Build::Copy 2.84
+      Alien::Build::Plugin::Build::MSYS 2.84
+      Alien::Build::Plugin::Build::Make 2.84
+      Alien::Build::Plugin::Build::SearchDep 2.84
+      Alien::Build::Plugin::Core::CleanInstall 2.84
+      Alien::Build::Plugin::Core::Download 2.84
+      Alien::Build::Plugin::Core::FFI 2.84
+      Alien::Build::Plugin::Core::Gather 2.84
+      Alien::Build::Plugin::Core::Legacy 2.84
+      Alien::Build::Plugin::Core::Override 2.84
+      Alien::Build::Plugin::Core::Setup 2.84
+      Alien::Build::Plugin::Core::Tail 2.84
+      Alien::Build::Plugin::Decode::DirListing 2.84
+      Alien::Build::Plugin::Decode::DirListingFtpcopy 2.84
+      Alien::Build::Plugin::Decode::HTML 2.84
+      Alien::Build::Plugin::Decode::Mojo 2.84
+      Alien::Build::Plugin::Digest::Negotiate 2.84
+      Alien::Build::Plugin::Digest::SHA 2.84
+      Alien::Build::Plugin::Digest::SHAPP 2.84
+      Alien::Build::Plugin::Download::Negotiate 2.84
+      Alien::Build::Plugin::Extract::ArchiveTar 2.84
+      Alien::Build::Plugin::Extract::ArchiveZip 2.84
+      Alien::Build::Plugin::Extract::CommandLine 2.84
+      Alien::Build::Plugin::Extract::Directory 2.84
+      Alien::Build::Plugin::Extract::File 2.84
+      Alien::Build::Plugin::Extract::Negotiate 2.84
+      Alien::Build::Plugin::Fetch::CurlCommand 2.84
+      Alien::Build::Plugin::Fetch::HTTPTiny 2.84
+      Alien::Build::Plugin::Fetch::LWP 2.84
+      Alien::Build::Plugin::Fetch::Local 2.84
+      Alien::Build::Plugin::Fetch::LocalDir 2.84
+      Alien::Build::Plugin::Fetch::NetFTP 2.84
+      Alien::Build::Plugin::Fetch::Wget 2.84
+      Alien::Build::Plugin::Gather::IsolateDynamic 2.84
+      Alien::Build::Plugin::PkgConfig::CommandLine 2.84
+      Alien::Build::Plugin::PkgConfig::LibPkgConf 2.84
+      Alien::Build::Plugin::PkgConfig::MakeStatic 2.84
+      Alien::Build::Plugin::PkgConfig::Negotiate 2.84
+      Alien::Build::Plugin::PkgConfig::PP 2.84
+      Alien::Build::Plugin::Prefer::BadVersion 2.84
+      Alien::Build::Plugin::Prefer::GoodVersion 2.84
+      Alien::Build::Plugin::Prefer::SortVersions 2.84
+      Alien::Build::Plugin::Probe::CBuilder 2.84
+      Alien::Build::Plugin::Probe::CommandLine 2.84
+      Alien::Build::Plugin::Probe::Vcpkg 2.84
+      Alien::Build::Plugin::Test::Mock 2.84
+      Alien::Build::PluginMeta 2.84
+      Alien::Build::Temp 2.84
+      Alien::Build::TempDir 2.84
+      Alien::Build::Util 2.84
+      Alien::Build::Version::Basic 2.84
+      Alien::Build::rc 2.84
+      Alien::Role 2.84
+      Alien::Util 2.84
+      Test::Alien 2.84
+      Test::Alien::Build 2.84
+      Test::Alien::CanCompile 2.84
+      Test::Alien::CanPlatypus 2.84
+      Test::Alien::Diag 2.84
+      Test::Alien::Run 2.84
+      Test::Alien::Synthetic 2.84
+      alienfile 2.84
+    requirements:
+      Capture::Tiny 0.17
+      Digest::SHA 0
+      ExtUtils::CBuilder 0
+      ExtUtils::MakeMaker 6.64
+      ExtUtils::ParseXS 3.30
+      FFI::CheckLib 0.11
+      File::Which 1.10
+      File::chdir 0
+      JSON::PP 0
+      List::Util 1.33
+      Path::Tiny 0.077
+      Test2::API 1.302096
+      Text::ParseWords 3.26
+      parent 0
+      perl 5.008004
+  Alien-cmake3-0.10
+    pathname: P/PL/PLICEASE/Alien-cmake3-0.10.tar.gz
+    provides:
+      Alien::cmake3 0.10
+    requirements:
+      Alien::Base 0.92
+      Alien::Build 1.19
+      Alien::Build::MM 0.32
+      Capture::Tiny 0
+      ExtUtils::MakeMaker 6.52
+      File::Which 0
+      Path::Tiny 0
+      perl 5.008001
+  Alien-libsecp256k1-0.060001
+    pathname: B/BR/BRTASTIC/Alien-libsecp256k1-0.060001.tar.gz
+    provides:
+      Alien::libsecp256k1 0.060001
+    requirements:
+      Alien::Build 1.19
+      Alien::Build::MM 0.32
+      Alien::Build::Plugin::Build::CMake 0.99
+      Alien::Build::Plugin::Fetch::LocalDir 0.72
+      Alien::Build::Plugin::Gather::IsolateDynamic 0.48
+      Alien::cmake3 0.02
+      Config 0
+      ExtUtils::MakeMaker 6.52
+      perl 5.010
+  B-Hooks-EndOfScope-0.28
+    pathname: E/ET/ETHER/B-Hooks-EndOfScope-0.28.tar.gz
+    provides:
+      B::Hooks::EndOfScope 0.28
+      B::Hooks::EndOfScope::PP 0.28
+      B::Hooks::EndOfScope::XS 0.28
+    requirements:
+      ExtUtils::MakeMaker 0
+      Hash::Util::FieldHash 0
+      Module::Implementation 0.05
+      Scalar::Util 0
+      Sub::Exporter::Progressive 0.001006
+      Text::ParseWords 0
+      Tie::Hash 0
+      Variable::Magic 0.48
+      perl 5.006001
+      strict 0
+      warnings 0
+  Bitcoin-BIP39-0.003
+    pathname: P/PE/PERLANCAR/Bitcoin-BIP39-0.003.tar.gz
+    provides:
+      Bitcoin::BIP39 0.003
+      Bitcoin::Mnemonic 0.003
+    requirements:
+      Bytes::Random::Secure 0
+      Digest::SHA 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 0
+      WordList::EN::BIP39 0
+      alias::module 0
+      perl 5.010001
+      strict 0
+      warnings 0
+  Bitcoin-Crypto-4.003
+    pathname: B/BR/BRTASTIC/Bitcoin-Crypto-4.003.tar.gz
+    provides:
+      Bitcoin::Crypto 4.003
+      Bitcoin::Crypto::BIP44 4.003
+      Bitcoin::Crypto::BIP85 4.003
+      Bitcoin::Crypto::Base58 4.003
+      Bitcoin::Crypto::Bech32 4.003
+      Bitcoin::Crypto::Block 4.003
+      Bitcoin::Crypto::Constants 4.003
+      Bitcoin::Crypto::DerivationPath 4.003
+      Bitcoin::Crypto::Exception 4.003
+      Bitcoin::Crypto::Exception::Address 4.003
+      Bitcoin::Crypto::Exception::AddressGenerate 4.003
+      Bitcoin::Crypto::Exception::Base58 4.003
+      Bitcoin::Crypto::Exception::Base58InputChecksum 4.003
+      Bitcoin::Crypto::Exception::Base58InputFormat 4.003
+      Bitcoin::Crypto::Exception::Bech32 4.003
+      Bitcoin::Crypto::Exception::Bech32InputChecksum 4.003
+      Bitcoin::Crypto::Exception::Bech32InputData 4.003
+      Bitcoin::Crypto::Exception::Bech32InputFormat 4.003
+      Bitcoin::Crypto::Exception::Block 4.003
+      Bitcoin::Crypto::Exception::KeyCreate 4.003
+      Bitcoin::Crypto::Exception::KeyDerive 4.003
+      Bitcoin::Crypto::Exception::MnemonicCheck 4.003
+      Bitcoin::Crypto::Exception::MnemonicGenerate 4.003
+      Bitcoin::Crypto::Exception::NetworkCheck 4.003
+      Bitcoin::Crypto::Exception::NetworkConfig 4.003
+      Bitcoin::Crypto::Exception::PSBT 4.003
+      Bitcoin::Crypto::Exception::ScriptCompilation 4.003
+      Bitcoin::Crypto::Exception::ScriptOpcode 4.003
+      Bitcoin::Crypto::Exception::ScriptPush 4.003
+      Bitcoin::Crypto::Exception::ScriptRuntime 4.003
+      Bitcoin::Crypto::Exception::ScriptTree 4.003
+      Bitcoin::Crypto::Exception::ScriptType 4.003
+      Bitcoin::Crypto::Exception::SegwitProgram 4.003
+      Bitcoin::Crypto::Exception::Sign 4.003
+      Bitcoin::Crypto::Exception::Transaction 4.003
+      Bitcoin::Crypto::Exception::TransactionScript 4.003
+      Bitcoin::Crypto::Exception::UTXO 4.003
+      Bitcoin::Crypto::Helpers 4.003
+      Bitcoin::Crypto::Key::Base 4.003
+      Bitcoin::Crypto::Key::ExtBase 4.003
+      Bitcoin::Crypto::Key::ExtPrivate 4.003
+      Bitcoin::Crypto::Key::ExtPublic 4.003
+      Bitcoin::Crypto::Key::NUMS 4.003
+      Bitcoin::Crypto::Key::Private 4.003
+      Bitcoin::Crypto::Key::Public 4.003
+      Bitcoin::Crypto::Network 4.003
+      Bitcoin::Crypto::PSBT 4.003
+      Bitcoin::Crypto::PSBT::Field 4.003
+      Bitcoin::Crypto::PSBT::FieldType 4.003
+      Bitcoin::Crypto::PSBT::Map 4.003
+      Bitcoin::Crypto::Role::Compressed 4.003
+      Bitcoin::Crypto::Role::Key 4.003
+      Bitcoin::Crypto::Role::Network 4.003
+      Bitcoin::Crypto::Role::ShallowClone 4.003
+      Bitcoin::Crypto::Role::SignVerify 4.003
+      Bitcoin::Crypto::Role::WithDerivationPath 4.003
+      Bitcoin::Crypto::Script 4.003
+      Bitcoin::Crypto::Script::Common 4.003
+      Bitcoin::Crypto::Script::Compiler 4.003
+      Bitcoin::Crypto::Script::Compiler::Opcode 4.003
+      Bitcoin::Crypto::Script::Opcode 4.003
+      Bitcoin::Crypto::Script::Recognition 4.003
+      Bitcoin::Crypto::Script::Runner 4.003
+      Bitcoin::Crypto::Script::Transaction 4.003
+      Bitcoin::Crypto::Script::Tree 4.003
+      Bitcoin::Crypto::Secret 4.003
+      Bitcoin::Crypto::Tapscript 4.003
+      Bitcoin::Crypto::Tapscript::Opcode 4.003
+      Bitcoin::Crypto::Transaction 4.003
+      Bitcoin::Crypto::Transaction::AutoSigner 4.003
+      Bitcoin::Crypto::Transaction::ControlBlock 4.003
+      Bitcoin::Crypto::Transaction::Digest 4.003
+      Bitcoin::Crypto::Transaction::Digest::Config 4.003
+      Bitcoin::Crypto::Transaction::Digest::Result 4.003
+      Bitcoin::Crypto::Transaction::Flags 4.003
+      Bitcoin::Crypto::Transaction::Input 4.003
+      Bitcoin::Crypto::Transaction::Output 4.003
+      Bitcoin::Crypto::Transaction::Signer 4.003
+      Bitcoin::Crypto::Transaction::Signer::CompatP2WPKH 4.003
+      Bitcoin::Crypto::Transaction::Signer::CompatP2WSH 4.003
+      Bitcoin::Crypto::Transaction::Signer::CompatSegwit 4.003
+      Bitcoin::Crypto::Transaction::Signer::CustomLegacy 4.003
+      Bitcoin::Crypto::Transaction::Signer::Legacy 4.003
+      Bitcoin::Crypto::Transaction::Signer::P2PKH 4.003
+      Bitcoin::Crypto::Transaction::Signer::P2SH 4.003
+      Bitcoin::Crypto::Transaction::Signer::P2TR 4.003
+      Bitcoin::Crypto::Transaction::Signer::P2WPKH 4.003
+      Bitcoin::Crypto::Transaction::Signer::P2WSH 4.003
+      Bitcoin::Crypto::Transaction::Signer::Role::KeyHash 4.003
+      Bitcoin::Crypto::Transaction::Signer::Role::ScriptHash 4.003
+      Bitcoin::Crypto::Transaction::Signer::Segwit 4.003
+      Bitcoin::Crypto::Transaction::Signer::Taproot 4.003
+      Bitcoin::Crypto::Transaction::UTXO 4.003
+      Bitcoin::Crypto::Types 4.003
+      Bitcoin::Crypto::Util 4.003
+      Bitcoin::Crypto::Util::Internal 4.003
+    requirements:
+      Bitcoin::BIP39 0.002
+      Bitcoin::Secp256k1 0.008
+      CryptX 0.074
+      ExtUtils::MakeMaker 0
+      Feature::Compat::Try 0
+      List::Util 1.45
+      Math::BigInt 1.999831
+      Moo 2.003004
+      Mooish::AttributeBuilder 1.002
+      Mooish::Base 1.001
+      Type::Tiny 2
+      perl 5.014
+  Bitcoin-Secp256k1-0.011
+    pathname: B/BR/BRTASTIC/Bitcoin-Secp256k1-0.011.tar.gz
+    provides:
+      Bitcoin::Secp256k1 0.011
+    requirements:
+      Alien::libsecp256k1 0.060001
+      ExtUtils::MakeMaker 0
+  Bytes-Random-Secure-0.29
+    pathname: D/DA/DAVIDO/Bytes-Random-Secure-0.29.tar.gz
+    provides:
+      Bytes::Random::Secure 0.29
+    requirements:
+      Carp 0
+      Crypt::Random::Seed 0
+      ExtUtils::MakeMaker 6.56
+      MIME::Base64 0
+      MIME::QuotedPrint 3.03
+      Math::Random::ISAAC 0
+      Scalar::Util 1.21
+      Test::More 0.98
+      perl 5.006000
+  Capture-Tiny-0.50
+    pathname: D/DA/DAGOLDEN/Capture-Tiny-0.50.tar.gz
+    provides:
+      Capture::Tiny 0.50
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      File::Spec 0
+      File::Temp 0
+      IO::Handle 0
+      Scalar::Util 0
+      perl 5.006
+      strict 0
+      warnings 0
+  Class-Method-Modifiers-2.15
+    pathname: E/ET/ETHER/Class-Method-Modifiers-2.15.tar.gz
+    provides:
+      Class::Method::Modifiers 2.15
+    requirements:
+      B 0
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      base 0
+      perl 5.006
+      strict 0
+      warnings 0
+  Crypt-Random-Seed-0.03
+    pathname: D/DA/DANAJ/Crypt-Random-Seed-0.03.tar.gz
+    provides:
+      Crypt::Random::Seed 0.03
+    requirements:
+      Carp 0
+      Crypt::Random::TESHA2 0
+      Exporter 5.562
+      ExtUtils::MakeMaker 0
+      Fcntl 0
+      Test::More 0.45
+      base 0
+      constant 0
+      perl 5.006002
+  Crypt-Random-TESHA2-0.01
+    pathname: D/DA/DANAJ/Crypt-Random-TESHA2-0.01.tar.gz
+    provides:
+      Crypt::Random::TESHA2 0.01
+      Crypt::Random::TESHA2::Config 0.01
+    requirements:
+      Carp 0
+      Digest::SHA 5.22
+      Exporter 5.562
+      ExtUtils::MakeMaker 0
+      Test::More 0.45
+      Time::HiRes 1.9711
+      base 0
+      perl 5.006002
+  CryptX-0.087
+    pathname: M/MI/MIK/CryptX-0.087.tar.gz
+    provides:
+      Crypt::AuthEnc 0.087
+      Crypt::AuthEnc::CCM 0.087
+      Crypt::AuthEnc::ChaCha20Poly1305 0.087
+      Crypt::AuthEnc::EAX 0.087
+      Crypt::AuthEnc::GCM 0.087
+      Crypt::AuthEnc::OCB 0.087
+      Crypt::Checksum 0.087
+      Crypt::Checksum::Adler32 0.087
+      Crypt::Checksum::CRC32 0.087
+      Crypt::Cipher 0.087
+      Crypt::Cipher::AES 0.087
+      Crypt::Cipher::Anubis 0.087
+      Crypt::Cipher::Blowfish 0.087
+      Crypt::Cipher::CAST5 0.087
+      Crypt::Cipher::Camellia 0.087
+      Crypt::Cipher::DES 0.087
+      Crypt::Cipher::DES_EDE 0.087
+      Crypt::Cipher::IDEA 0.087
+      Crypt::Cipher::KASUMI 0.087
+      Crypt::Cipher::Khazad 0.087
+      Crypt::Cipher::MULTI2 0.087
+      Crypt::Cipher::Noekeon 0.087
+      Crypt::Cipher::RC2 0.087
+      Crypt::Cipher::RC5 0.087
+      Crypt::Cipher::RC6 0.087
+      Crypt::Cipher::SAFERP 0.087
+      Crypt::Cipher::SAFER_K128 0.087
+      Crypt::Cipher::SAFER_K64 0.087
+      Crypt::Cipher::SAFER_SK128 0.087
+      Crypt::Cipher::SAFER_SK64 0.087
+      Crypt::Cipher::SEED 0.087
+      Crypt::Cipher::Serpent 0.087
+      Crypt::Cipher::Skipjack 0.087
+      Crypt::Cipher::Twofish 0.087
+      Crypt::Cipher::XTEA 0.087
+      Crypt::Digest 0.087
+      Crypt::Digest::BLAKE2b_160 0.087
+      Crypt::Digest::BLAKE2b_256 0.087
+      Crypt::Digest::BLAKE2b_384 0.087
+      Crypt::Digest::BLAKE2b_512 0.087
+      Crypt::Digest::BLAKE2s_128 0.087
+      Crypt::Digest::BLAKE2s_160 0.087
+      Crypt::Digest::BLAKE2s_224 0.087
+      Crypt::Digest::BLAKE2s_256 0.087
+      Crypt::Digest::CHAES 0.087
+      Crypt::Digest::Keccak224 0.087
+      Crypt::Digest::Keccak256 0.087
+      Crypt::Digest::Keccak384 0.087
+      Crypt::Digest::Keccak512 0.087
+      Crypt::Digest::MD2 0.087
+      Crypt::Digest::MD4 0.087
+      Crypt::Digest::MD5 0.087
+      Crypt::Digest::RIPEMD128 0.087
+      Crypt::Digest::RIPEMD160 0.087
+      Crypt::Digest::RIPEMD256 0.087
+      Crypt::Digest::RIPEMD320 0.087
+      Crypt::Digest::SHA1 0.087
+      Crypt::Digest::SHA224 0.087
+      Crypt::Digest::SHA256 0.087
+      Crypt::Digest::SHA384 0.087
+      Crypt::Digest::SHA3_224 0.087
+      Crypt::Digest::SHA3_256 0.087
+      Crypt::Digest::SHA3_384 0.087
+      Crypt::Digest::SHA3_512 0.087
+      Crypt::Digest::SHA512 0.087
+      Crypt::Digest::SHA512_224 0.087
+      Crypt::Digest::SHA512_256 0.087
+      Crypt::Digest::SHAKE 0.087
+      Crypt::Digest::Tiger192 0.087
+      Crypt::Digest::Whirlpool 0.087
+      Crypt::KeyDerivation 0.087
+      Crypt::Mac 0.087
+      Crypt::Mac::BLAKE2b 0.087
+      Crypt::Mac::BLAKE2s 0.087
+      Crypt::Mac::F9 0.087
+      Crypt::Mac::HMAC 0.087
+      Crypt::Mac::OMAC 0.087
+      Crypt::Mac::PMAC 0.087
+      Crypt::Mac::Pelican 0.087
+      Crypt::Mac::Poly1305 0.087
+      Crypt::Mac::XCBC 0.087
+      Crypt::Misc 0.087
+      Crypt::Mode 0.087
+      Crypt::Mode::CBC 0.087
+      Crypt::Mode::CFB 0.087
+      Crypt::Mode::CTR 0.087
+      Crypt::Mode::ECB 0.087
+      Crypt::Mode::OFB 0.087
+      Crypt::PK 0.087
+      Crypt::PK::DH 0.087
+      Crypt::PK::DSA 0.087
+      Crypt::PK::ECC 0.087
+      Crypt::PK::Ed25519 0.087
+      Crypt::PK::RSA 0.087
+      Crypt::PK::X25519 0.087
+      Crypt::PRNG 0.087
+      Crypt::PRNG::ChaCha20 0.087
+      Crypt::PRNG::Fortuna 0.087
+      Crypt::PRNG::RC4 0.087
+      Crypt::PRNG::Sober128 0.087
+      Crypt::PRNG::Yarrow 0.087
+      Crypt::Stream::ChaCha 0.087
+      Crypt::Stream::RC4 0.087
+      Crypt::Stream::Rabbit 0.087
+      Crypt::Stream::Salsa20 0.087
+      Crypt::Stream::Sober128 0.087
+      Crypt::Stream::Sosemanuk 0.087
+      CryptX 0.087
+      Math::BigInt::LTM 0.087
+    requirements:
+      ExtUtils::MakeMaker 0
+      Math::BigInt 0
+      perl 5.006
+  Dist-CheckConflicts-0.11
+    pathname: D/DO/DOY/Dist-CheckConflicts-0.11.tar.gz
+    provides:
+      Dist::CheckConflicts 0.11
+    requirements:
+      Carp 0
+      Exporter 0
+      ExtUtils::MakeMaker 6.30
+      Module::Runtime 0.009
+      base 0
+      strict 0
+      warnings 0
+  Exporter-Tiny-1.006003
+    pathname: T/TO/TOBYINK/Exporter-Tiny-1.006003.tar.gz
+    provides:
+      Exporter::Shiny 1.006003
+      Exporter::Tiny 1.006003
+    requirements:
+      ExtUtils::MakeMaker 6.17
+      perl 5.006001
+  FFI-CheckLib-0.31
+    pathname: P/PL/PLICEASE/FFI-CheckLib-0.31.tar.gz
+    provides:
+      FFI::CheckLib 0.31
+    requirements:
+      ExtUtils::MakeMaker 0
+      File::Which 0
+      List::Util 1.33
+      perl 5.006
+  Feature-Compat-Try-0.05
+    pathname: P/PE/PEVANS/Feature-Compat-Try-0.05.tar.gz
+    provides:
+      Feature::Compat::Try 0.05
+    requirements:
+      Module::Build 0.4004
+      perl 5.014
+  File-Which-1.27
+    pathname: P/PL/PLICEASE/File-Which-1.27.tar.gz
+    provides:
+      File::Which 1.27
+    requirements:
+      ExtUtils::MakeMaker 0
+      base 0
+      perl 5.006
+  File-chdir-0.1011
+    pathname: D/DA/DAGOLDEN/File-chdir-0.1011.tar.gz
+    provides:
+      File::chdir 0.1011
+      File::chdir::ARRAY 0.1011
+      File::chdir::SCALAR 0.1011
+    requirements:
+      Carp 0
+      Cwd 3.16
+      Exporter 0
+      ExtUtils::MakeMaker 6.17
+      File::Spec::Functions 3.27
+      perl 5.006
+      strict 0
+      vars 0
+  Import-Into-1.002005
+    pathname: H/HA/HAARG/Import-Into-1.002005.tar.gz
+    provides:
+      Import::Into 1.002005
+    requirements:
+      ExtUtils::MakeMaker 0
+      Module::Runtime 0
+      perl 5.006
+      strict 0
+      warnings 0
+  Math-Random-ISAAC-1.004
+    pathname: J/JA/JAWNSY/Math-Random-ISAAC-1.004.tar.gz
+    provides:
+      Math::Random::ISAAC 1.004
+      Math::Random::ISAAC::PP 1.004
+    requirements:
+      ExtUtils::MakeMaker 6.31
+      Test::More 0.62
+      Test::NoWarnings 0.084
+  Module-Build-0.4234
+    pathname: L/LE/LEONT/Module-Build-0.4234.tar.gz
+    provides:
+      Module::Build 0.4234
+      Module::Build::Base 0.4234
+      Module::Build::Compat 0.4234
+      Module::Build::Config 0.4234
+      Module::Build::Cookbook 0.4234
+      Module::Build::Dumper 0.4234
+      Module::Build::Notes 0.4234
+      Module::Build::PPMMaker 0.4234
+      Module::Build::Platform::Default 0.4234
+      Module::Build::Platform::MacOS 0.4234
+      Module::Build::Platform::Unix 0.4234
+      Module::Build::Platform::VMS 0.4234
+      Module::Build::Platform::VOS 0.4234
+      Module::Build::Platform::Windows 0.4234
+      Module::Build::Platform::aix 0.4234
+      Module::Build::Platform::cygwin 0.4234
+      Module::Build::Platform::darwin 0.4234
+      Module::Build::Platform::os2 0.4234
+      Module::Build::PodParser 0.4234
+    requirements:
+      CPAN::Meta 2.142060
+      Cwd 0
+      Data::Dumper 0
+      ExtUtils::CBuilder 0.27
+      ExtUtils::Install 0
+      ExtUtils::Manifest 0
+      ExtUtils::Mkbootstrap 0
+      ExtUtils::ParseXS 2.21
+      File::Basename 0
+      File::Compare 0
+      File::Copy 0
+      File::Find 0
+      File::Path 0
+      File::Spec 0.82
+      Getopt::Long 0
+      Module::Metadata 1.000002
+      Perl::OSType 1
+      TAP::Harness 3.29
+      Text::Abbrev 0
+      Text::ParseWords 0
+      perl 5.006001
+      version 0.87
+  Module-Implementation-0.09
+    pathname: D/DR/DROLSKY/Module-Implementation-0.09.tar.gz
+    provides:
+      Module::Implementation 0.09
+    requirements:
+      Carp 0
+      ExtUtils::MakeMaker 0
+      Module::Runtime 0.012
+      Try::Tiny 0
+      strict 0
+      warnings 0
+  Module-Runtime-0.018
+    pathname: H/HA/HAARG/Module-Runtime-0.018.tar.gz
+    provides:
+      Module::Runtime 0.018
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.006000
+  Mojolicious-9.42
+    pathname: S/SR/SRI/Mojolicious-9.42.tar.gz
+    provides:
+      Mojo undef
+      Mojo::Asset undef
+      Mojo::Asset::File undef
+      Mojo::Asset::Memory undef
+      Mojo::Base undef
+      Mojo::BaseUtil undef
+      Mojo::ByteStream undef
+      Mojo::Cache undef
+      Mojo::Collection undef
+      Mojo::Content undef
+      Mojo::Content::MultiPart undef
+      Mojo::Content::Single undef
+      Mojo::Cookie undef
+      Mojo::Cookie::Request undef
+      Mojo::Cookie::Response undef
+      Mojo::DOM undef
+      Mojo::DOM::CSS undef
+      Mojo::DOM::HTML undef
+      Mojo::Date undef
+      Mojo::DynamicMethods undef
+      Mojo::EventEmitter undef
+      Mojo::Exception undef
+      Mojo::File undef
+      Mojo::Headers undef
+      Mojo::HelloWorld undef
+      Mojo::Home undef
+      Mojo::IOLoop undef
+      Mojo::IOLoop::Client undef
+      Mojo::IOLoop::Server undef
+      Mojo::IOLoop::Stream undef
+      Mojo::IOLoop::Subprocess undef
+      Mojo::IOLoop::TLS undef
+      Mojo::JSON undef
+      Mojo::JSON::Pointer undef
+      Mojo::Loader undef
+      Mojo::Log undef
+      Mojo::Message undef
+      Mojo::Message::Request undef
+      Mojo::Message::Response undef
+      Mojo::Parameters undef
+      Mojo::Path undef
+      Mojo::Promise undef
+      Mojo::Reactor undef
+      Mojo::Reactor::EV undef
+      Mojo::Reactor::Poll undef
+      Mojo::SSE undef
+      Mojo::Server undef
+      Mojo::Server::CGI undef
+      Mojo::Server::Daemon undef
+      Mojo::Server::Hypnotoad undef
+      Mojo::Server::Morbo undef
+      Mojo::Server::Morbo::Backend undef
+      Mojo::Server::Morbo::Backend::Poll undef
+      Mojo::Server::PSGI undef
+      Mojo::Server::Prefork undef
+      Mojo::Template undef
+      Mojo::Transaction undef
+      Mojo::Transaction::HTTP undef
+      Mojo::Transaction::WebSocket undef
+      Mojo::URL undef
+      Mojo::Upload undef
+      Mojo::UserAgent undef
+      Mojo::UserAgent::CookieJar undef
+      Mojo::UserAgent::Proxy undef
+      Mojo::UserAgent::Server undef
+      Mojo::UserAgent::Transactor undef
+      Mojo::Util undef
+      Mojo::WebSocket undef
+      Mojolicious 9.42
+      Mojolicious::Command undef
+      Mojolicious::Command::Author::cpanify undef
+      Mojolicious::Command::Author::generate undef
+      Mojolicious::Command::Author::generate::app undef
+      Mojolicious::Command::Author::generate::dockerfile undef
+      Mojolicious::Command::Author::generate::lite_app undef
+      Mojolicious::Command::Author::generate::makefile undef
+      Mojolicious::Command::Author::generate::plugin undef
+      Mojolicious::Command::Author::inflate undef
+      Mojolicious::Command::cgi undef
+      Mojolicious::Command::daemon undef
+      Mojolicious::Command::eval undef
+      Mojolicious::Command::get undef
+      Mojolicious::Command::prefork undef
+      Mojolicious::Command::psgi undef
+      Mojolicious::Command::routes undef
+      Mojolicious::Command::version undef
+      Mojolicious::Commands undef
+      Mojolicious::Controller undef
+      Mojolicious::Lite undef
+      Mojolicious::Plugin undef
+      Mojolicious::Plugin::Config undef
+      Mojolicious::Plugin::DefaultHelpers undef
+      Mojolicious::Plugin::EPLRenderer undef
+      Mojolicious::Plugin::EPRenderer undef
+      Mojolicious::Plugin::HeaderCondition undef
+      Mojolicious::Plugin::JSONConfig undef
+      Mojolicious::Plugin::Mount undef
+      Mojolicious::Plugin::NotYAMLConfig undef
+      Mojolicious::Plugin::TagHelpers undef
+      Mojolicious::Plugins undef
+      Mojolicious::Renderer undef
+      Mojolicious::Routes undef
+      Mojolicious::Routes::Match undef
+      Mojolicious::Routes::Pattern undef
+      Mojolicious::Routes::Route undef
+      Mojolicious::Sessions undef
+      Mojolicious::Static undef
+      Mojolicious::Types undef
+      Mojolicious::Validator undef
+      Mojolicious::Validator::Validation undef
+      Test::Mojo undef
+      ojo undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      IO::Socket::IP 0.37
+      Sub::Util 1.41
+      perl 5.016
+  Moo-2.005005
+    pathname: H/HA/HAARG/Moo-2.005005.tar.gz
+    provides:
+      Method::Generate::Accessor undef
+      Method::Generate::BuildAll undef
+      Method::Generate::Constructor undef
+      Method::Generate::DemolishAll undef
+      Moo 2.005005
+      Moo::HandleMoose undef
+      Moo::HandleMoose::FakeConstructor undef
+      Moo::HandleMoose::FakeMetaClass undef
+      Moo::HandleMoose::_TypeMap undef
+      Moo::Object undef
+      Moo::Role 2.005005
+      Moo::_Utils undef
+      Moo::sification undef
+      oo undef
+    requirements:
+      Carp 0
+      Class::Method::Modifiers 1.10
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Role::Tiny 2.002003
+      Scalar::Util 1.00
+      Sub::Defer 2.006006
+      Sub::Quote 2.006006
+      perl 5.006
+  Mooish-AttributeBuilder-1.003
+    pathname: B/BR/BRTASTIC/Mooish-AttributeBuilder-1.003.tar.gz
+    provides:
+      Mooish::AttributeBuilder 1.003
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.010
+  Mooish-Base-1.003
+    pathname: B/BR/BRTASTIC/Mooish-Base-1.003.tar.gz
+    provides:
+      Mooish::Base 1.003
+    requirements:
+      ExtUtils::MakeMaker 0
+      Import::Into 1.002005
+      Moo 2.004000
+      Mooish::AttributeBuilder 1.002
+      Type::Tiny 2.010001
+      namespace::autoclean 0.19
+      perl 5.010
+  Package-Stash-0.40
+    pathname: E/ET/ETHER/Package-Stash-0.40.tar.gz
+    provides:
+      Package::Stash 0.40
+      Package::Stash::PP 0.40
+    requirements:
+      B 0
+      Carp 0
+      Dist::CheckConflicts 0.02
+      ExtUtils::MakeMaker 0
+      Getopt::Long 0
+      Module::Implementation 0.06
+      Package::Stash::XS 0.26
+      Scalar::Util 0
+      Symbol 0
+      Text::ParseWords 0
+      constant 0
+      perl 5.008001
+      strict 0
+      warnings 0
+  Package-Stash-XS-0.30
+    pathname: E/ET/ETHER/Package-Stash-XS-0.30.tar.gz
+    provides:
+      Package::Stash::XS 0.30
+    requirements:
+      ExtUtils::MakeMaker 0
+      XSLoader 0
+      perl 5.008001
+      strict 0
+      warnings 0
+  Path-Tiny-0.150
+    pathname: D/DA/DAGOLDEN/Path-Tiny-0.150.tar.gz
+    provides:
+      Path::Tiny 0.150
+      Path::Tiny::Error 0.150
+    requirements:
+      Carp 0
+      Cwd 0
+      Digest 1.03
+      Digest::SHA 5.45
+      Encode 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 6.17
+      Fcntl 0
+      File::Compare 0
+      File::Copy 0
+      File::Glob 0
+      File::Path 2.07
+      File::Spec 0.86
+      File::Temp 0.19
+      File::stat 0
+      constant 0
+      overload 0
+      perl 5.008001
+      strict 0
+      warnings 0
+      warnings::register 0
+  Role-Tiny-2.002004
+    pathname: H/HA/HAARG/Role-Tiny-2.002004.tar.gz
+    provides:
+      Role::Tiny 2.002004
+      Role::Tiny::With 2.002004
+    requirements:
+      Exporter 5.57
+      perl 5.006
+  Sub-Exporter-Progressive-0.001013
+    pathname: F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz
+    provides:
+      Sub::Exporter::Progressive 0.001013
+    requirements:
+      ExtUtils::MakeMaker 0
+  Sub-Quote-2.006009
+    pathname: H/HA/HAARG/Sub-Quote-2.006009.tar.gz
+    provides:
+      Sub::Defer 2.006009
+      Sub::Quote 2.006009
+    requirements:
+      ExtUtils::MakeMaker 0
+      Scalar::Util 0
+      perl 5.006
+  TermReadKey-2.38
+    pathname: J/JS/JSTOWE/TermReadKey-2.38.tar.gz
+    provides:
+      Term::ReadKey 2.38
+    requirements:
+      ExtUtils::MakeMaker 6.58
+  Test-NoWarnings-1.06
+    pathname: H/HA/HAARG/Test-NoWarnings-1.06.tar.gz
+    provides:
+      Test::NoWarnings 1.06
+      Test::NoWarnings::Warning 1.06
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::Builder 0.86
+      perl 5.006
+  Try-Tiny-0.32
+    pathname: E/ET/ETHER/Try-Tiny-0.32.tar.gz
+    provides:
+      Try::Tiny 0.32
+    requirements:
+      Carp 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 0
+      constant 0
+      perl 5.006
+      strict 0
+      warnings 0
+  Type-Tiny-2.010001
+    pathname: T/TO/TOBYINK/Type-Tiny-2.010001.tar.gz
+    provides:
+      Devel::TypeTiny::Perl58Compat 2.010001
+      Error::TypeTiny 2.010001
+      Error::TypeTiny::Assertion 2.010001
+      Error::TypeTiny::Compilation 2.010001
+      Error::TypeTiny::WrongNumberOfParameters 2.010001
+      Eval::TypeTiny 2.010001
+      Eval::TypeTiny::CodeAccumulator 2.010001
+      Reply::Plugin::TypeTiny 2.010001
+      Test::TypeTiny 2.010001
+      Type::Coercion 2.010001
+      Type::Coercion::FromMoose 2.010001
+      Type::Coercion::Union 2.010001
+      Type::Library 2.010001
+      Type::Params 2.010001
+      Type::Params::Alternatives 2.010001
+      Type::Params::Parameter 2.010001
+      Type::Params::Signature 2.010001
+      Type::Parser 2.010001
+      Type::Parser::AstBuilder 2.010001
+      Type::Parser::Token 2.010001
+      Type::Parser::TokenStream 2.010001
+      Type::Registry 2.010001
+      Type::Tie 2.010001
+      Type::Tie::ARRAY 2.010001
+      Type::Tie::BASE 2.010001
+      Type::Tie::HASH 2.010001
+      Type::Tie::SCALAR 2.010001
+      Type::Tiny 2.010001
+      Type::Tiny::Bitfield 2.010001
+      Type::Tiny::Class 2.010001
+      Type::Tiny::ConstrainedObject 2.010001
+      Type::Tiny::Duck 2.010001
+      Type::Tiny::Enum 2.010001
+      Type::Tiny::Intersection 2.010001
+      Type::Tiny::Role 2.010001
+      Type::Tiny::Union 2.010001
+      Type::Utils 2.010001
+      Types::Common 2.010001
+      Types::Common::Numeric 2.010001
+      Types::Common::String 2.010001
+      Types::Standard 2.010001
+      Types::Standard::ArrayRef 2.010001
+      Types::Standard::CycleTuple 2.010001
+      Types::Standard::Dict 2.010001
+      Types::Standard::HashRef 2.010001
+      Types::Standard::Map 2.010001
+      Types::Standard::ScalarRef 2.010001
+      Types::Standard::StrMatch 2.010001
+      Types::Standard::Tied 2.010001
+      Types::Standard::Tuple 2.010001
+      Types::TypeTiny 2.010001
+    requirements:
+      Exporter::Tiny 1.006000
+      ExtUtils::MakeMaker 6.17
+      perl 5.008001
+  Variable-Magic-0.64
+    pathname: V/VP/VPIT/Variable-Magic-0.64.tar.gz
+    provides:
+      Variable::Magic 0.64
+    requirements:
+      Carp 0
+      Config 0
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      IO::Handle 0
+      IO::Select 0
+      IPC::Open3 0
+      POSIX 0
+      Socket 0
+      Test::More 0
+      XSLoader 0
+      base 0
+      lib 0
+      perl 5.008
+  WordList-0.7.11
+    pathname: P/PE/PERLANCAR/WordList-0.7.11.tar.gz
+    provides:
+      WordList v0.7.11
+      WordList::Test::Dynamic::OneTwo_Each v0.7.11
+      WordList::Test::Dynamic::OneTwo_EachParam v0.7.11
+      WordList::Test::Dynamic::OneTwo_FirstNextReset v0.7.11
+      WordList::Test::OneTwo v0.7.11
+      WordListBase v0.7.11
+      WordListRole::EachFromFirstNextReset v0.7.11
+      WordListRole::FirstNextResetFromEach v0.7.11
+      WordListRole::FromArray v0.7.11
+      WordListRole::Test v0.7.11
+      WordListRole::WordList v0.7.11
+    requirements:
+      ExtUtils::MakeMaker 0
+      Role::Tiny 0
+      Role::Tiny::With 0
+      strict 0
+      warnings 0
+  WordList-EN-BIP39-0.002
+    pathname: P/PE/PERLANCAR/WordList-EN-BIP39-0.002.tar.gz
+    provides:
+      WordList::EN::BIP39 0.002
+    requirements:
+      ExtUtils::MakeMaker 0
+      WordList v0.7.4
+  alias-module-0.003
+    pathname: P/PE/PERLANCAR/alias-module-0.003.tar.gz
+    provides:
+      alias::module 0.003
+    requirements:
+      ExtUtils::MakeMaker 0
+  namespace-autoclean-0.31
+    pathname: E/ET/ETHER/namespace-autoclean-0.31.tar.gz
+    provides:
+      namespace::autoclean 0.31
+    requirements:
+      B 0
+      B::Hooks::EndOfScope 0.12
+      ExtUtils::MakeMaker 0
+      List::Util 0
+      namespace::clean 0.20
+      perl 5.006
+      strict 0
+      warnings 0
+  namespace-clean-0.27
+    pathname: R/RI/RIBASUSHI/namespace-clean-0.27.tar.gz
+    provides:
+      namespace::clean 0.27
+    requirements:
+      B::Hooks::EndOfScope 0.12
+      ExtUtils::MakeMaker 0
+      Package::Stash 0.23
+      perl 5.008001

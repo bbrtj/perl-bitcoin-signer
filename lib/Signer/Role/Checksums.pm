@@ -1,8 +1,8 @@
 package Signer::Role::Checksums;
 
-use v5.38;
+use v5.40;
 
-use Moo::Role;
+use Mooish::Base -role;
 use Mojo::JSON qw(encode_json decode_json);
 use Bitcoin::Crypto::Util qw(to_format hash256);
 

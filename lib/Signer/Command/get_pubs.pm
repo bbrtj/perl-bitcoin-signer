@@ -1,9 +1,8 @@
 package Signer::Command::get_pubs;
 
-use v5.38;
+use v5.40;
 
-use Moo;
-use Mooish::AttributeBuilder;
+use Mooish::Base;
 
 extends 'Mojolicious::Command';
 
