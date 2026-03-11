@@ -25,7 +25,7 @@ has field 'usage' => (
 
 has field 'extpub' => (
 	lazy => sub ($self) {
-		return btc_extpub->from_serialized([base58 => $self->signer_config->{zpub}]);
+		return btc_extpub->from_serialized([base58 => $self->signer_config->{extpub}]);
 	},
 );
 

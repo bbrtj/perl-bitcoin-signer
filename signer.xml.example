@@ -14,7 +14,7 @@
 	<field name="signer_port">3000</field>
 
 	<!-- client - run get-pubs command and fill this (for addresses and changes) -->
-	<field name="zpub">vpub5ZqRyvYbqfDTCLefa3YyuCQBUou5AHmmcm9vLCX89ZzJFtw1uk193jzXj6SEKDaGdV7xJYP8PouEejMUstnboLqBzaNouBYjx75uGaxgxkz</field>
+	<field name="extpub">vpub5ZqRyvYbqfDTCLefa3YyuCQBUou5AHmmcm9vLCX89ZzJFtw1uk193jzXj6SEKDaGdV7xJYP8PouEejMUstnboLqBzaNouBYjx75uGaxgxkz</field>
 
 </config>
 
