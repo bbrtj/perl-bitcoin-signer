@@ -8,6 +8,12 @@ use Mojo::File qw(path);
 
 my $config;
 
+sub set_config_keys ($self, %keys)
+{
+	$config //= {};
+	$config->@{keys %keys} = values %keys;
+}
+
 sub signer_config ($self)
 {
 	if (!defined $config) {

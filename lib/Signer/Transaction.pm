@@ -7,19 +7,15 @@ use Bitcoin::Crypto::Util qw(get_address_type);
 
 use Signer::Input::Transaction;
 
-has param 'parent' => (
-	isa => InstanceOf ['Signer'],
-	handles => {
-		config => 'signer_config',
-	},
-);
-
 has param 'input' => (
 	coerce => (InstanceOf ['Signer::Input::Transaction'])
 		->plus_coercions(HashRef, q{ Signer::Input::Transaction->new($_) }),
 );
 
-with qw(Signer::Role::HasMasterKey);
+with qw(
+	Signer::Role::HasConfig
+	Signer::Role::HasMasterKey
+);
 
 sub get_excess_sats ($self, $tx, $fee_rate)
 {

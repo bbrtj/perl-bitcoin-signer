@@ -7,19 +7,15 @@ use Bitcoin::Crypto::Constants ':bip44';
 
 use Signer::Input;
 
-has param 'parent' => (
-	isa => InstanceOf ['Signer'],
-	handles => {
-		config => 'signer_config',
-	},
-);
-
 has param 'input' => (
 	coerce => (InstanceOf ['Signer::Input'])
 		->plus_coercions(HashRef, q{ Signer::Input->new($_) }),
 );
 
-with qw(Signer::Role::HasMasterKey);
+with qw(
+	Signer::Role::HasConfig
+	Signer::Role::HasMasterKey
+);
 
 sub get_pubs ($self)
 {
