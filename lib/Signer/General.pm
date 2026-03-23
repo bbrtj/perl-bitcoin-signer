@@ -23,7 +23,7 @@ sub get_pubs ($self)
 		BIP44_PURPOSE,
 		BIP44_COMPAT_PURPOSE,
 		BIP44_SEGWIT_PURPOSE,
-		BIP44_TAPROOT_PURPOSE
+		BIP44_TAPROOT_PURPOSE,
 	);
 
 	my @pubs = map {
