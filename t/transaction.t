@@ -43,21 +43,18 @@ subtest 'get_tx should produce a signed transaction' => sub {
 	my $tx = $module->get_tx;
 
 	isa_ok $tx, 'Bitcoin::Crypto::Transaction';
-	my $expected_tx_hex = $meta->{tx_hex};
-	is unpack('H*', $tx->to_serialized), $expected_tx_hex, 'serialized tx matches expected';
+	is unpack('H*', $tx->to_serialized), $meta->{tx_hex}, 'serialized tx matches expected';
 };
 
-# subtest 'get_tx self_outputs should belong to this master key' => sub {
-# 	my $tx = $module->get_tx;
-# 	for my $output_index (@self_outputs) {
-# 		my $address = $tx->outputs->[$output_index]->locking_script->get_address;
+subtest 'get_tx self_outputs should belong to this master key' => sub {
+	my $tx = $module->get_tx;
 
-# 		ok(
-# 			eval { $module->find_key($address); 1 },
-# 			"self output $output_index address ($address) belongs to master key"
-# 		);
-# 	}
-# };
+	for my $output ($tx->outputs->@*) {
+		my $address = $output->locking_script->get_address;
+
+		ok lives { $module->find_key($address) }, "address $address belongs to master key";
+	}
+};
 
 done_testing;
 
