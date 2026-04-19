@@ -49,18 +49,33 @@ sub _parse ($self, $file)
 		};
 	}
 
+	my $raw_meta = $root->at('meta');
+	my %meta;
+	if (defined $raw_meta) {
+		$raw_meta = $raw_meta->children('prop')->to_array;
+		foreach my $prop ($raw_meta->@*) {
+			$meta{$prop->attr('name')} = $prop->text;
+		}
+	}
+
 	return {
 		fee_rate => $fee,
 		skip => $skip,
 		inputs => \@inputs,
 		outputs => \@outputs,
+		meta => \%meta,
 	};
 }
 
 sub _partial_parse ($self, $file, $state)
 {
 	my $data = $self->_parse($file);
+
 	$state->{address} += $data->{skip};
+	$state->{meta} = {
+		($state->{meta} // {})->%*,
+		$data->{meta}->%*,
+	};
 
 	foreach my $output ($data->{outputs}->@*) {
 		if ($output->{address} eq 'new_address') {
@@ -79,6 +94,11 @@ sub _full_parse ($self, $file, $state)
 	my $data = $self->_parse($file);
 
 	$state->{address} += $data->{skip};
+	$state->{meta} = {
+		($state->{meta} // {})->%*,
+		$data->{meta}->%*,
+	};
+
 	return {
 		state => $state,
 		tx => $data,

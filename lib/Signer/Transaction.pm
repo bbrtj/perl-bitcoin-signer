@@ -23,8 +23,7 @@ sub get_excess_sats ($self, $tx, $fee_rate)
 	my $current_fee_rate = $tx->fee_rate;
 	my $excess_sats = $size * ($current_fee_rate - $fee_rate);
 
-	# gets bigint from bigfloat
-	return $excess_sats->as_number;
+	return $excess_sats;
 }
 
 sub get_change_key ($self)
@@ -68,7 +67,7 @@ sub find_key ($self, $address, %opts)
 	for my $conf (@config) {
 		foreach my $ind ($conf->{from} .. $conf->{to}) {
 			my $key = $acc_key->derive_key_bip44(
-				get_from_account => 1,
+				get_from_account => true,
 				change => $conf->{change},
 				index => $ind,
 			)->get_basic_key;
@@ -122,7 +121,7 @@ sub get_tx ($self)
 			# transaction slightly bigger, so only do it if excess sats are
 			# more than transaction virtual size
 			$tx->add_output(
-				locking_script => [address => $self->input->change],
+				locking_script => [address => $input->change],
 				value => 0,
 			);
 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transaction>
+	<fee_rate>10</fee_rate>
+	<inputs>
+		<input index="0">87c29f81ba96c49ef5299c14074f3c82fd0e455ebe80efc10cf69cc440fa64a1</input>
+	</inputs>
+	<outputs>
+		<output value="90000">new_address</output>
+		<output value="change">new_change</output>
+	</outputs>
+
+	<meta>
+		<prop name="prevouts">a0860100000000001976a9141eaf4543226f2ff393fd0abb264a471be387f51e88ac</prop>
+		<prop name="mnemonic_fixture">0</prop>
+		<prop name="mnemonic_account">1</prop>
+		<prop name="tx_hex">0100000001a164fa40c49cf60cc1ef80be5e450efd823c4f07149c29f59ec496ba819fc287000000006b483045022100d53931bfdd23aa356c0ff0110754a77e0b8f6f18c97a612c03fec0cab7b5fae702205b931b8aa5d868fef59f1d58a7418707b9dc66622e8ee863d03a39bc4aeff01001210393b3389840dfff1ca3ad5c56f910a9264fc4afe453dbee3c0b225235a8c6f08afdffffff02905f0100000000001600142b16caadafc8968dc22cdede8c85b4008877848a811e000000000000160014f352ea7d3089ae16442be10bcc2f42e34bbdb75c00000000</prop>
+	</meta>
+</transaction>
+
