@@ -13,6 +13,11 @@ has param 'input' => (
 		->plus_coercions(HashRef, q{ Signer::Input::Transaction->new($_) }),
 );
 
+has field '_key_cache' => (
+	isa => HashRef,
+	default => sub { {} },
+);
+
 with qw(
 	Signer::Role::HasConfig
 	Signer::Role::HasMasterKey
@@ -38,6 +43,23 @@ sub get_change_key ($self)
 	return $change;
 }
 
+sub _get_key ($self, $purpose, $change, $index)
+{
+	my $cache = $self->_key_cache;
+	my $acc_key = $cache->{$purpose}{acc_key} //=
+		$self->master_key($purpose);
+
+	return $cache->{$purpose}{$change}[$index] //= do {
+		my $key = $acc_key->derive_key_bip44(
+			get_from_account => true,
+			change => $change,
+			index => $index,
+		)->get_basic_key;
+
+		[$key, $key->get_public_key->get_address];
+	};
+}
+
 sub find_key ($self, $address, %opts)
 {
 	my $type = get_address_type($address);
@@ -49,19 +71,13 @@ sub find_key ($self, $address, %opts)
 	);
 	my $purpose = $purpose_map{$type};
 
-	my $acc_key = $self->master_key($purpose);
 	for my $change (0, 1) {
 		next if $opts{change} && !$change;
 
 		foreach my $ind (0 .. $self->input->address_search_range) {
-			my $key = $acc_key->derive_key_bip44(
-				get_from_account => true,
-				change => $change,
-				index => $ind,
-			)->get_basic_key;
-
-			return $key
-				if $key->get_public_key->get_address eq $address;
+			my $key_data = $self->_get_key($purpose, $change, $ind);
+			return $key_data->[0]
+				if $key_data->[1] eq $address;
 		}
 	}
 
