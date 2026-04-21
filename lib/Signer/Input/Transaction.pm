@@ -13,22 +13,7 @@ has param 'change' => (
 	required => 0,
 );
 
-has param 'change_search_from' => (
-	isa => PositiveOrZeroInt,
-	default => 0,
-);
-
-has param 'change_search_to' => (
-	isa => PositiveOrZeroInt,
-	default => 20,
-);
-
-has param 'address_search_from' => (
-	isa => PositiveOrZeroInt,
-	default => 0,
-);
-
-has param 'address_search_to' => (
+has param 'address_search_range' => (
 	isa => PositiveOrZeroInt,
 	default => 20,
 );

@@ -7,6 +7,7 @@ use Signer::ClientScripts;
 use Signer::Transaction;
 use SignerTest::Fixtures qw(test_mnemonics);
 use SignerTest::Sign;
+use Mojo::JSON qw(encode_json decode_json);
 
 ################################################################################
 # This tests whether Transaction module works
@@ -58,18 +59,22 @@ foreach my $case (
 		my $client_scripts = Signer::ClientScripts->new(directory => "t/transactions/$case");
 		my $meta = $client_scripts->head->{state}{meta};
 		my $key_data = test_mnemonics($meta->{mnemonic_fixture}, $meta->{mnemonic_account});
-		my $extprv = $key_data->{account_keys}{$meta->{mnemonic_account}}{(BIP44_SEGWIT_PURPOSE)};
 
 		my $sign = SignerTest::Sign->new(
 			client_scripts => $client_scripts,
-			extprv => $extprv,
+			master_key => $key_data->{master_key},
+			account => $meta->{mnemonic_account},
 		);
 
+		# encode and decode args to simulate API behavior (makes sure no
+		# illegal data is present)
 		my %args = $sign->get_last_script_args->%*;
+		my $args_coded = decode_json encode_json \%args;
+
 		my $module = Signer::Transaction->new(
 			input => {
 				password => $key_data->{mnemonic_password},
-				%args,
+				$args_coded->%*,
 			}
 		);
 

@@ -4,6 +4,7 @@ use v5.40;
 use Mooish::Base;
 use Bitcoin::Crypto qw(btc_transaction);
 use Bitcoin::Crypto::Util qw(get_address_type);
+use Bitcoin::Crypto::Constants qw(:bip44);
 
 use Signer::Input::Transaction;
 
@@ -33,7 +34,7 @@ sub get_change_key ($self)
 		unless defined $change;
 
 	# dies if not found
-	$self->find_key($change, change => 1);
+	$self->find_key($change, change => true);
 	return $change;
 }
 
@@ -41,34 +42,21 @@ sub find_key ($self, $address, %opts)
 {
 	my $type = get_address_type($address);
 	my %purpose_map = (
-		P2PKH => 44,
-		P2SH => 49,
-		P2WPKH => 84,
+		P2PKH => BIP44_PURPOSE,
+		P2SH => BIP44_COMPAT_PURPOSE,
+		P2WPKH => BIP44_SEGWIT_PURPOSE,
+		P2TR => BIP44_TAPROOT_PURPOSE,
 	);
 	my $purpose = $purpose_map{$type};
 
-	my $input = $self->input;
-	my @config = (
-		(
-			$opts{change} ? () : {
-				change => 0,
-				from => $input->address_search_from,
-				to => $input->address_search_to,
-			}
-		),
-		{
-			change => 1,
-			from => $input->change_search_from,
-			to => $input->change_search_to,
-		},
-	);
-
 	my $acc_key = $self->master_key($purpose);
-	for my $conf (@config) {
-		foreach my $ind ($conf->{from} .. $conf->{to}) {
+	for my $change (0, 1) {
+		next if $opts{change} && !$change;
+
+		foreach my $ind (0 .. $self->input->address_search_range) {
 			my $key = $acc_key->derive_key_bip44(
 				get_from_account => true,
-				change => $conf->{change},
+				change => $change,
 				index => $ind,
 			)->get_basic_key;
 

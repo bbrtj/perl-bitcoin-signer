@@ -3,7 +3,7 @@ package Signer::General;
 use v5.40;
 use Mooish::Base;
 use Bitcoin::Crypto::Util qw(to_format);
-use Bitcoin::Crypto::Constants ':bip44';
+use Bitcoin::Crypto::Constants qw(:bip44);
 
 use Signer::Input;
 

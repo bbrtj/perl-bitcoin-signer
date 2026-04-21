@@ -22,9 +22,15 @@ has field 'usage' => (
 	},
 );
 
-has field 'extpub' => (
+has field 'extpub_segwit' => (
 	lazy => sub ($self) {
-		return btc_extpub->from_serialized([base58 => $self->signer_config->{extpub}]);
+		return btc_extpub->from_serialized([base58 => $self->signer_config->{extpub_segwit}]);
+	},
+);
+
+has field 'extpub_taproot' => (
+	lazy => sub ($self) {
+		return btc_extpub->from_serialized([base58 => $self->signer_config->{extpub_taproot}]);
 	},
 );
 
@@ -49,14 +55,6 @@ with qw(
 	Signer::Role::QueriesAPI
 	Signer::Role::ReadsScripts
 );
-
-sub get_address ($self, $change, $index)
-{
-	return $self->extpub->derive_key_bip44(
-		change => $change ? 1 : 0,
-		index => $index
-	)->get_basic_key->get_address;
-}
 
 sub load_utxos ($self, $txid_hex)
 {

@@ -4,6 +4,7 @@ use v5.40;
 use Mooish::Base;
 use Mojo::File qw(path);
 use Mojo::DOM;
+use Signer::ClientScripts::IndexTracker;
 
 has param 'directory' => (
 	default => 'transactions',
@@ -22,13 +23,25 @@ sub _parse ($self, $file)
 	my $dom = Mojo::DOM->new(path($file)->slurp);
 	my $root = $dom->at('transaction');
 
+	# segwit is used by default for backcompat
+	# (avoid changing transaction history in xml files)
+
 	my $fee = $root->at('fee_rate')->text;
-	my $skip = $root->at('skip_addresses');
-	if (defined $skip) {
-		$skip = $skip->text;
-	}
-	else {
-		$skip = 0;
+
+	my %skip = (
+		skip_addresses => {},
+		skip_change => {},
+	);
+
+	foreach my $skip_type (qw(skip_addresses skip_change)) {
+		my $raw_skip = $root->children($skip_type)->to_array;
+
+		foreach my $to_skip ($raw_skip->@*) {
+			my $type = $to_skip->attr->{type} // 'segwit';
+			$skip{$skip_type}{$type} += $to_skip->text;
+		}
+
+		$skip{$skip_type} = Signer::ClientScripts::IndexTracker->new($skip{$skip_type});
 	}
 
 	my $raw_inputs = $root->at('inputs')->children('input')->to_array;
@@ -46,6 +59,7 @@ sub _parse ($self, $file)
 			value => $output->attr('value'),
 			address => $output->text,
 			check => exists $output->attr->{check},
+			type => $output->attr->{type} // 'segwit',
 		};
 	}
 
@@ -60,10 +74,10 @@ sub _parse ($self, $file)
 
 	return {
 		fee_rate => $fee,
-		skip => $skip,
 		inputs => \@inputs,
 		outputs => \@outputs,
 		meta => \%meta,
+		%skip,
 	};
 }
 
@@ -71,18 +85,19 @@ sub _partial_parse ($self, $file, $state)
 {
 	my $data = $self->_parse($file);
 
-	$state->{address} += $data->{skip};
+	$state->{address} = $state->{address}->merge($data->{skip_addresses});
+	$state->{change} = $state->{change}->merge($data->{skip_change});
 	$state->{meta} = {
 		($state->{meta} // {})->%*,
 		$data->{meta}->%*,
 	};
 
 	foreach my $output ($data->{outputs}->@*) {
-		if ($output->{address} eq 'new_address') {
-			$state->{address}++;
+		if (fc $output->{address} eq fc 'new_address') {
+			$state->{address}->increment($output->{type});
 		}
-		if ($output->{address} eq 'new_change') {
-			$state->{change}++;
+		if (fc $output->{address} eq fc 'new_change') {
+			$state->{change}->increment($output->{type});
 		}
 	}
 
@@ -93,7 +108,9 @@ sub _full_parse ($self, $file, $state)
 {
 	my $data = $self->_parse($file);
 
-	$state->{address} += $data->{skip};
+	$state->{address} = $state->{address}->merge($data->{skip_addresses});
+	$state->{change} = $state->{change}->merge($data->{skip_change});
+
 	$state->{meta} = {
 		($state->{meta} // {})->%*,
 		$data->{meta}->%*,
@@ -109,8 +126,8 @@ sub BUILD ($self, $args)
 {
 	my @files = sort { $a cmp $b } glob $self->directory . '/*.xml';
 	my $state = {
-		change => 0,
-		address => 0,
+		change => Signer::ClientScripts::IndexTracker->new,
+		address => Signer::ClientScripts::IndexTracker->new,
 	};
 
 	my $last = pop @files;

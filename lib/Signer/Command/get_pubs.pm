@@ -8,7 +8,7 @@ extends 'Mojolicious::Command';
 
 has field 'description' => (
 	default => sub {
-		'Get extended public keys from signer',;
+		'Get extended public keys from signer';
 	},
 );
 
@@ -32,7 +32,8 @@ sub run ($self, @args)
 		password => scalar $self->read_password('wallet'),
 	);
 
-	say $_ for $result->@*;
+	say "segwit: $result->[2]";
+	say "taproot: $result->[3]";
 }
 
 __END__

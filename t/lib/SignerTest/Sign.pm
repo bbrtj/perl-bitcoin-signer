@@ -5,13 +5,36 @@ use v5.40;
 use Mooish::Base;
 
 use Bitcoin::Crypto qw(btc_utxo);
+use Bitcoin::Crypto::Constants qw(:bip44);
 use Bitcoin::Crypto::Transaction::Output;
 
-has param 'extprv' => (
+has param 'master_key' => (
 	isa => InstanceOf ['Bitcoin::Crypto::Key::ExtPrivate'],
 );
 
+has param 'account' => (
+	isa => PositiveOrZeroInt,
+);
+
 with 'Signer::Role::ReadsScripts';
+
+sub extpub_segwit ($self)
+{
+	return $self->master_key->derive_key_bip44(
+		get_account => true,
+		account => $self->account,
+		purpose => BIP44_SEGWIT_PURPOSE,
+	)->get_public_key;
+}
+
+sub extpub_taproot ($self)
+{
+	return $self->master_key->derive_key_bip44(
+		get_account => true,
+		account => $self->account,
+		purpose => BIP44_TAPROOT_PURPOSE,
+	)->get_public_key;
+}
 
 sub load_utxos ($self, $txid_hex)
 {
@@ -38,14 +61,5 @@ sub load_utxos ($self, $txid_hex)
 	}
 
 	$loaded = true;
-}
-
-sub get_address ($self, $change, $index)
-{
-	return $self->extprv->derive_key_bip44(
-		get_from_account => 1,
-		change => $change,
-		index => $index,
-	)->get_basic_key->get_public_key->get_address;
 }
 

@@ -14,7 +14,8 @@
 	<field name="signer_port">3000</field>
 
 	<!-- client - run get-pubs command and fill this (for addresses and changes) -->
-	<field name="extpub">vpub5ZqRyvYbqfDTCLefa3YyuCQBUou5AHmmcm9vLCX89ZzJFtw1uk193jzXj6SEKDaGdV7xJYP8PouEejMUstnboLqBzaNouBYjx75uGaxgxkz</field>
+	<field name="extpub_segwit">vpub5ZqRyvYbqfDTCLefa3YyuCQBUou5AHmmcm9vLCX89ZzJFtw1uk193jzXj6SEKDaGdV7xJYP8PouEejMUstnboLqBzaNouBYjx75uGaxgxkz</field>
+	<field name="extpub_taproot">tpubDD2NC2Sm7gLnfHa9eTpyBEEPSTVEthWbVY1Lyo4geJkbcZ17HWEiSMpmENdMKTnWNEESfHED1bmj9pUmCHwQiGqJ8pLV7mkPX5EBWFV42nJ</field>
 
 </config>
 

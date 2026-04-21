@@ -3,13 +3,15 @@ package Signer::Role::ReadsScripts;
 use v5.40;
 
 use Mooish::Base -role;
+use List::Util qw(max);
 use Signer::ClientScripts;
 use Bitcoin::Crypto qw(btc_utxo);
 use Bitcoin::Crypto::Util qw(to_format);
 
 requires qw(
 	load_utxos
-	get_address
+	extpub_segwit
+	extpub_taproot
 );
 
 has param 'client_scripts' => (
@@ -17,16 +19,33 @@ has param 'client_scripts' => (
 	default => sub { Signer::ClientScripts->new },
 );
 
+sub get_address ($self, $index, $type, $change)
+{
+	my $extpub = "extpub_$type";
+
+	return $self->$extpub->derive_key_bip44(
+		get_from_account => true,
+		change => $change ? 1 : 0,
+		index => $index
+	)->get_basic_key->get_address;
+}
+
 sub get_last_script_args ($self)
 {
 	my $head = $self->client_scripts->head;
 	die 'no client scripts detected!' unless defined $head;
 
+	my $max_address = max
+		$head->{state}{address}->segwit,
+		$head->{state}{address}->taproot,
+		$head->{state}{address}->segwit,
+		$head->{state}{address}->taproot
+		;
+
 	my %args = (
 		fee_rate => $head->{tx}{fee_rate} // 1,
 		($head->{tx}{change} ? (change => 1) : ()),
-		change_search_to => $head->{state}{change} + 20,
-		address_search_to => $head->{state}{address} + 20,
+		address_search_range => $max_address + 20,
 		inputs => [],
 		outputs => [],
 		self_outputs => [],
@@ -61,12 +80,22 @@ sub get_last_script_args ($self)
 
 		my $address = $output->{address};
 		if (fc $address eq fc 'new_address') {
-			$address = $self->get_address(0, $head->{state}{address}++);
+			$address = $self->get_address(
+				$head->{state}{address}->increment($output->{type}),
+				$output->{type},
+				false,
+			);
+
 			push $args{self_outputs}->@*, $output_index;
 		}
 		elsif (fc $address eq fc 'new_change') {
 			die 'change output must be set to change value' unless $is_change;
-			$address = $self->get_address(1, $head->{state}{change}++);
+			$address = $self->get_address(
+				$head->{state}{change}->increment($output->{type}),
+				$output->{type},
+				true,
+			);
+
 			push $args{self_outputs}->@*, $output_index;
 		}
 		elsif ($output->{check}) {
