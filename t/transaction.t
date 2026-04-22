@@ -53,6 +53,7 @@ foreach my $case (
 	qw(
 		basic
 		taproot
+		skip
 	)
 	)
 {

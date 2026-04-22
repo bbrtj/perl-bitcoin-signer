@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transaction>
+	<fee_rate>0.1</fee_rate>
+	<inputs>
+		<input index="0">12c28f81ba96c49ef5299c14074f3c82fd0e455ebe80efc10cf69cc440fa64a2</input>
+	</inputs>
+	<outputs>
+		<output value="45000" type="taproot">new_address</output>
+		<output value="45000">new_address</output>
+		<output value="change" type="taproot">new_change</output>
+	</outputs>
+
+	<skip_addresses type="segwit">2</skip_addresses>
+	<skip_addresses type="taproot">3</skip_addresses>
+	<skip_change type="taproot">4</skip_change>
+
+	<meta>
+		<prop name="prevouts">a08601000000000017a9146a698f75d3b7e21a6ada237074cf56367cb70f7787</prop>
+		<prop name="mnemonic_fixture">0</prop>
+		<prop name="mnemonic_account">1</prop>
+		<prop name="tx_hex">01000000000101a264fa40c49cf60cc1ef80be5e450efd823c4f07149c29f59ec496ba818fc21200000000171600147325901fd31102aa910af3033445b83159d0b381fdffffff03c8af0000000000002251200bbee5407f629fb9dfe7c027a8bb4dbad05a86b1c77c2261cbaf15b097736912c8af00000000000016001443033d511fd1101a795c1e3858d99667c64fb95bfa26000000000000225120f731a7e8ef02f050bc6c5652cf08c5d3195a85b1ef17cb08b9ac0275e31fdbea02483045022100bed3bd58db23145c8251e5deeb095defdb66c949425606c7728aacb27276e06102203bbc7f2675417878d1421cf630849093d3bf19e0412fa3cef49d8942bd8649a40121032a0767c3426e5a6ffe81a104495892cc307183e5d1c5da6568497a1d5a38c88600000000</prop>
+	</meta>
+</transaction>
+

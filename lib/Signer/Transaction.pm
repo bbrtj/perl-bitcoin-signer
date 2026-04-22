@@ -29,7 +29,7 @@ sub get_excess_sats ($self, $tx, $fee_rate)
 	my $current_fee_rate = $tx->fee_rate;
 	my $excess_sats = $size * ($current_fee_rate - $fee_rate);
 
-	return $excess_sats;
+	return int $excess_sats;
 }
 
 sub get_change_key ($self)
