@@ -52,6 +52,7 @@ subtest 'testing whether find_key works' => sub {
 foreach my $case (
 	qw(
 		basic
+		taproot
 	)
 	)
 {

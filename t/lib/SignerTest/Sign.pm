@@ -16,6 +16,12 @@ has param 'account' => (
 	isa => PositiveOrZeroInt,
 );
 
+has field 'utxos_loaded' => (
+	isa => Bool,
+	writer => 1,
+	default => false,
+);
+
 with 'Signer::Role::ReadsScripts';
 
 sub extpub_segwit ($self)
@@ -38,8 +44,7 @@ sub extpub_taproot ($self)
 
 sub load_utxos ($self, $txid_hex)
 {
-	state $loaded = false;
-	return if $loaded;
+	return if $self->utxos_loaded;
 
 	my $head = $self->client_scripts->head;
 	my $prevouts = $head->{tx}{meta}{prevouts};
@@ -60,6 +65,6 @@ sub load_utxos ($self, $txid_hex)
 		)->register;
 	}
 
-	$loaded = true;
+	$self->set_utxos_loaded(true);
 }
 
