@@ -158,117 +158,117 @@ DISTRIBUTIONS
       perl 5.010001
       strict 0
       warnings 0
-  Bitcoin-Crypto-4.003
-    pathname: B/BR/BRTASTIC/Bitcoin-Crypto-4.003.tar.gz
+  Bitcoin-Crypto-4.005
+    pathname: B/BR/BRTASTIC/Bitcoin-Crypto-4.005.tar.gz
     provides:
-      Bitcoin::Crypto 4.003
-      Bitcoin::Crypto::BIP44 4.003
-      Bitcoin::Crypto::BIP85 4.003
-      Bitcoin::Crypto::Base58 4.003
-      Bitcoin::Crypto::Bech32 4.003
-      Bitcoin::Crypto::Block 4.003
-      Bitcoin::Crypto::Constants 4.003
-      Bitcoin::Crypto::DerivationPath 4.003
-      Bitcoin::Crypto::Exception 4.003
-      Bitcoin::Crypto::Exception::Address 4.003
-      Bitcoin::Crypto::Exception::AddressGenerate 4.003
-      Bitcoin::Crypto::Exception::Base58 4.003
-      Bitcoin::Crypto::Exception::Base58InputChecksum 4.003
-      Bitcoin::Crypto::Exception::Base58InputFormat 4.003
-      Bitcoin::Crypto::Exception::Bech32 4.003
-      Bitcoin::Crypto::Exception::Bech32InputChecksum 4.003
-      Bitcoin::Crypto::Exception::Bech32InputData 4.003
-      Bitcoin::Crypto::Exception::Bech32InputFormat 4.003
-      Bitcoin::Crypto::Exception::Block 4.003
-      Bitcoin::Crypto::Exception::KeyCreate 4.003
-      Bitcoin::Crypto::Exception::KeyDerive 4.003
-      Bitcoin::Crypto::Exception::MnemonicCheck 4.003
-      Bitcoin::Crypto::Exception::MnemonicGenerate 4.003
-      Bitcoin::Crypto::Exception::NetworkCheck 4.003
-      Bitcoin::Crypto::Exception::NetworkConfig 4.003
-      Bitcoin::Crypto::Exception::PSBT 4.003
-      Bitcoin::Crypto::Exception::ScriptCompilation 4.003
-      Bitcoin::Crypto::Exception::ScriptOpcode 4.003
-      Bitcoin::Crypto::Exception::ScriptPush 4.003
-      Bitcoin::Crypto::Exception::ScriptRuntime 4.003
-      Bitcoin::Crypto::Exception::ScriptTree 4.003
-      Bitcoin::Crypto::Exception::ScriptType 4.003
-      Bitcoin::Crypto::Exception::SegwitProgram 4.003
-      Bitcoin::Crypto::Exception::Sign 4.003
-      Bitcoin::Crypto::Exception::Transaction 4.003
-      Bitcoin::Crypto::Exception::TransactionScript 4.003
-      Bitcoin::Crypto::Exception::UTXO 4.003
-      Bitcoin::Crypto::Helpers 4.003
-      Bitcoin::Crypto::Key::Base 4.003
-      Bitcoin::Crypto::Key::ExtBase 4.003
-      Bitcoin::Crypto::Key::ExtPrivate 4.003
-      Bitcoin::Crypto::Key::ExtPublic 4.003
-      Bitcoin::Crypto::Key::NUMS 4.003
-      Bitcoin::Crypto::Key::Private 4.003
-      Bitcoin::Crypto::Key::Public 4.003
-      Bitcoin::Crypto::Network 4.003
-      Bitcoin::Crypto::PSBT 4.003
-      Bitcoin::Crypto::PSBT::Field 4.003
-      Bitcoin::Crypto::PSBT::FieldType 4.003
-      Bitcoin::Crypto::PSBT::Map 4.003
-      Bitcoin::Crypto::Role::Compressed 4.003
-      Bitcoin::Crypto::Role::Key 4.003
-      Bitcoin::Crypto::Role::Network 4.003
-      Bitcoin::Crypto::Role::ShallowClone 4.003
-      Bitcoin::Crypto::Role::SignVerify 4.003
-      Bitcoin::Crypto::Role::WithDerivationPath 4.003
-      Bitcoin::Crypto::Script 4.003
-      Bitcoin::Crypto::Script::Common 4.003
-      Bitcoin::Crypto::Script::Compiler 4.003
-      Bitcoin::Crypto::Script::Compiler::Opcode 4.003
-      Bitcoin::Crypto::Script::Opcode 4.003
-      Bitcoin::Crypto::Script::Recognition 4.003
-      Bitcoin::Crypto::Script::Runner 4.003
-      Bitcoin::Crypto::Script::Transaction 4.003
-      Bitcoin::Crypto::Script::Tree 4.003
-      Bitcoin::Crypto::Secret 4.003
-      Bitcoin::Crypto::Tapscript 4.003
-      Bitcoin::Crypto::Tapscript::Opcode 4.003
-      Bitcoin::Crypto::Transaction 4.003
-      Bitcoin::Crypto::Transaction::AutoSigner 4.003
-      Bitcoin::Crypto::Transaction::ControlBlock 4.003
-      Bitcoin::Crypto::Transaction::Digest 4.003
-      Bitcoin::Crypto::Transaction::Digest::Config 4.003
-      Bitcoin::Crypto::Transaction::Digest::Result 4.003
-      Bitcoin::Crypto::Transaction::Flags 4.003
-      Bitcoin::Crypto::Transaction::Input 4.003
-      Bitcoin::Crypto::Transaction::Output 4.003
-      Bitcoin::Crypto::Transaction::Signer 4.003
-      Bitcoin::Crypto::Transaction::Signer::CompatP2WPKH 4.003
-      Bitcoin::Crypto::Transaction::Signer::CompatP2WSH 4.003
-      Bitcoin::Crypto::Transaction::Signer::CompatSegwit 4.003
-      Bitcoin::Crypto::Transaction::Signer::CustomLegacy 4.003
-      Bitcoin::Crypto::Transaction::Signer::Legacy 4.003
-      Bitcoin::Crypto::Transaction::Signer::P2PKH 4.003
-      Bitcoin::Crypto::Transaction::Signer::P2SH 4.003
-      Bitcoin::Crypto::Transaction::Signer::P2TR 4.003
-      Bitcoin::Crypto::Transaction::Signer::P2WPKH 4.003
-      Bitcoin::Crypto::Transaction::Signer::P2WSH 4.003
-      Bitcoin::Crypto::Transaction::Signer::Role::KeyHash 4.003
-      Bitcoin::Crypto::Transaction::Signer::Role::ScriptHash 4.003
-      Bitcoin::Crypto::Transaction::Signer::Segwit 4.003
-      Bitcoin::Crypto::Transaction::Signer::Taproot 4.003
-      Bitcoin::Crypto::Transaction::UTXO 4.003
-      Bitcoin::Crypto::Types 4.003
-      Bitcoin::Crypto::Util 4.003
-      Bitcoin::Crypto::Util::Internal 4.003
+      Bitcoin::Crypto 4.005
+      Bitcoin::Crypto::BIP44 4.005
+      Bitcoin::Crypto::BIP85 4.005
+      Bitcoin::Crypto::Base58 4.005
+      Bitcoin::Crypto::Bech32 4.005
+      Bitcoin::Crypto::Block 4.005
+      Bitcoin::Crypto::Constants 4.005
+      Bitcoin::Crypto::DerivationPath 4.005
+      Bitcoin::Crypto::Exception 4.005
+      Bitcoin::Crypto::Exception::Address 4.005
+      Bitcoin::Crypto::Exception::AddressGenerate 4.005
+      Bitcoin::Crypto::Exception::Base58 4.005
+      Bitcoin::Crypto::Exception::Base58InputChecksum 4.005
+      Bitcoin::Crypto::Exception::Base58InputFormat 4.005
+      Bitcoin::Crypto::Exception::Bech32 4.005
+      Bitcoin::Crypto::Exception::Bech32InputChecksum 4.005
+      Bitcoin::Crypto::Exception::Bech32InputData 4.005
+      Bitcoin::Crypto::Exception::Bech32InputFormat 4.005
+      Bitcoin::Crypto::Exception::Block 4.005
+      Bitcoin::Crypto::Exception::KeyCreate 4.005
+      Bitcoin::Crypto::Exception::KeyDerive 4.005
+      Bitcoin::Crypto::Exception::MnemonicCheck 4.005
+      Bitcoin::Crypto::Exception::MnemonicGenerate 4.005
+      Bitcoin::Crypto::Exception::NetworkCheck 4.005
+      Bitcoin::Crypto::Exception::NetworkConfig 4.005
+      Bitcoin::Crypto::Exception::PSBT 4.005
+      Bitcoin::Crypto::Exception::ScriptCompilation 4.005
+      Bitcoin::Crypto::Exception::ScriptOpcode 4.005
+      Bitcoin::Crypto::Exception::ScriptPush 4.005
+      Bitcoin::Crypto::Exception::ScriptRuntime 4.005
+      Bitcoin::Crypto::Exception::ScriptTree 4.005
+      Bitcoin::Crypto::Exception::ScriptType 4.005
+      Bitcoin::Crypto::Exception::SegwitProgram 4.005
+      Bitcoin::Crypto::Exception::Sign 4.005
+      Bitcoin::Crypto::Exception::Transaction 4.005
+      Bitcoin::Crypto::Exception::TransactionScript 4.005
+      Bitcoin::Crypto::Exception::UTXO 4.005
+      Bitcoin::Crypto::Helpers 4.005
+      Bitcoin::Crypto::Key::Base 4.005
+      Bitcoin::Crypto::Key::ExtBase 4.005
+      Bitcoin::Crypto::Key::ExtPrivate 4.005
+      Bitcoin::Crypto::Key::ExtPublic 4.005
+      Bitcoin::Crypto::Key::NUMS 4.005
+      Bitcoin::Crypto::Key::Private 4.005
+      Bitcoin::Crypto::Key::Public 4.005
+      Bitcoin::Crypto::Network 4.005
+      Bitcoin::Crypto::PSBT 4.005
+      Bitcoin::Crypto::PSBT::Field 4.005
+      Bitcoin::Crypto::PSBT::FieldType 4.005
+      Bitcoin::Crypto::PSBT::Map 4.005
+      Bitcoin::Crypto::Role::Compressed 4.005
+      Bitcoin::Crypto::Role::Key 4.005
+      Bitcoin::Crypto::Role::Network 4.005
+      Bitcoin::Crypto::Role::ShallowClone 4.005
+      Bitcoin::Crypto::Role::SignVerify 4.005
+      Bitcoin::Crypto::Role::WithDerivationPath 4.005
+      Bitcoin::Crypto::Script 4.005
+      Bitcoin::Crypto::Script::Common 4.005
+      Bitcoin::Crypto::Script::Compiler 4.005
+      Bitcoin::Crypto::Script::Compiler::Opcode 4.005
+      Bitcoin::Crypto::Script::Opcode 4.005
+      Bitcoin::Crypto::Script::Recognition 4.005
+      Bitcoin::Crypto::Script::Runner 4.005
+      Bitcoin::Crypto::Script::Transaction 4.005
+      Bitcoin::Crypto::Script::Tree 4.005
+      Bitcoin::Crypto::Secret 4.005
+      Bitcoin::Crypto::Tapscript 4.005
+      Bitcoin::Crypto::Tapscript::Opcode 4.005
+      Bitcoin::Crypto::Transaction 4.005
+      Bitcoin::Crypto::Transaction::AutoSigner 4.005
+      Bitcoin::Crypto::Transaction::ControlBlock 4.005
+      Bitcoin::Crypto::Transaction::Digest 4.005
+      Bitcoin::Crypto::Transaction::Digest::Config 4.005
+      Bitcoin::Crypto::Transaction::Digest::Result 4.005
+      Bitcoin::Crypto::Transaction::Flags 4.005
+      Bitcoin::Crypto::Transaction::Input 4.005
+      Bitcoin::Crypto::Transaction::Output 4.005
+      Bitcoin::Crypto::Transaction::Signer 4.005
+      Bitcoin::Crypto::Transaction::Signer::CompatP2WPKH 4.005
+      Bitcoin::Crypto::Transaction::Signer::CompatP2WSH 4.005
+      Bitcoin::Crypto::Transaction::Signer::CompatSegwit 4.005
+      Bitcoin::Crypto::Transaction::Signer::CustomLegacy 4.005
+      Bitcoin::Crypto::Transaction::Signer::Legacy 4.005
+      Bitcoin::Crypto::Transaction::Signer::P2PKH 4.005
+      Bitcoin::Crypto::Transaction::Signer::P2SH 4.005
+      Bitcoin::Crypto::Transaction::Signer::P2TR 4.005
+      Bitcoin::Crypto::Transaction::Signer::P2WPKH 4.005
+      Bitcoin::Crypto::Transaction::Signer::P2WSH 4.005
+      Bitcoin::Crypto::Transaction::Signer::Role::KeyHash 4.005
+      Bitcoin::Crypto::Transaction::Signer::Role::ScriptHash 4.005
+      Bitcoin::Crypto::Transaction::Signer::Segwit 4.005
+      Bitcoin::Crypto::Transaction::Signer::Taproot 4.005
+      Bitcoin::Crypto::Transaction::UTXO 4.005
+      Bitcoin::Crypto::Types 4.005
+      Bitcoin::Crypto::Util 4.005
+      Bitcoin::Crypto::Util::Internal 4.005
     requirements:
       Bitcoin::BIP39 0.002
-      Bitcoin::Secp256k1 0.008
+      Bitcoin::Secp256k1 0.011
       CryptX 0.074
       ExtUtils::MakeMaker 0
       Feature::Compat::Try 0
       List::Util 1.45
       Math::BigInt 1.999831
       Moo 2.003004
-      Mooish::AttributeBuilder 1.002
-      Mooish::Base 1.001
+      Mooish::Base 1.005
       Type::Tiny 2
+      namespace::autoclean 0
       perl 5.014
   Bitcoin-Secp256k1-0.011
     pathname: B/BR/BRTASTIC/Bitcoin-Secp256k1-0.011.tar.gz
@@ -758,10 +758,10 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.010
-  Mooish-Base-1.003
-    pathname: B/BR/BRTASTIC/Mooish-Base-1.003.tar.gz
+  Mooish-Base-1.005
+    pathname: B/BR/BRTASTIC/Mooish-Base-1.005.tar.gz
     provides:
-      Mooish::Base 1.003
+      Mooish::Base 1.005
     requirements:
       ExtUtils::MakeMaker 0
       Import::Into 1.002005
