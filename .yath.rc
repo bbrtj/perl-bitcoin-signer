@@ -1,0 +1,4 @@
+[test]
+-j4
+-ETEST2_UUID_NO_WARN=1
+

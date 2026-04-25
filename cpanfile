@@ -1,5 +1,6 @@
 on 'test' => sub {
 	requires 'Test2::V1';
+	requires 'App::Yath';
 };
 
 requires 'Mojolicious';
