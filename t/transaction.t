@@ -58,6 +58,7 @@ foreach my $case (
 		taproot
 		skip
 		multi
+		nulldata
 	)
 	)
 {
@@ -99,7 +100,8 @@ foreach my $case (
 		subtest 'get_tx self_outputs should belong to this master key' => sub {
 			my $tx = $module->get_tx;
 
-			for my $output ($tx->outputs->@*) {
+			for my $output_index ($module->input->self_outputs->@*) {
+				my $output = $tx->outputs->[$output_index];
 				my $address = $output->locking_script->get_address;
 
 				ok lives { $module->find_key($address) }, "address $address belongs to master key";

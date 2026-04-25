@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transaction>
+	<fee_rate>10</fee_rate>
+	<inputs>
+		<input index="0">88c29f81ba97c49ef5298c14073f2c82fd0e455ebe80efc10cf69cc440fa64a1</input>
+	</inputs>
+	<outputs>
+		<output value="0" type="nulldata">nulldata testing</output>
+		<output value="change">new_change</output>
+	</outputs>
+
+	<meta>
+		<prop name="prevouts">a0860100000000001976a9141eaf4543226f2ff393fd0abb264a471be387f51e88ac</prop>
+		<prop name="mnemonic_fixture">0</prop>
+		<prop name="mnemonic_account">1</prop>
+		<prop name="tx_hex">0100000001a164fa40c49cf60cc1ef80be5e450efd822c3f07148c29f59ec497ba819fc288000000006a47304402204fdcc89b7ab5669a9dd6c64a5d014ee7ab65c11522dece4e8158f398dd499ce502206d8ebbad3d5e47838319988b4b84971b32242050eff1d3ccf9e6f23179ead27d01210393b3389840dfff1ca3ad5c56f910a9264fc4afe453dbee3c0b225235a8c6f08afdffffff020000000000000000126a106e756c6c646174612074657374696e673a7e010000000000160014f352ea7d3089ae16442be10bcc2f42e34bbdb75c00000000</prop>
+	</meta>
+</transaction>
+

@@ -108,7 +108,7 @@ sub get_last_script_args ($self)
 			next;
 		}
 
-		my $nulldata = $address =~ s/^nulldata://;
+		my $nulldata = fc $output->{type} eq fc 'nulldata';
 		my %params = (
 			locking_script => [($nulldata ? 'NULLDATA' : 'address') => $address],
 			value => '' . $value,
