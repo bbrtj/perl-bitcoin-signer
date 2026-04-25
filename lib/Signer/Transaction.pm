@@ -114,6 +114,8 @@ sub get_tx ($self)
 	$tx->set_rbf;
 
 	if ($input->change) {
+		die 'fee_rate is required if one of the outputs is a change address!'
+			unless defined $input->fee_rate;
 
 		# presign to get size and adjust the fee
 		sign;
@@ -141,9 +143,11 @@ sub get_tx ($self)
 	sign;
 
 	# final checks
-	my $fee_diff = $tx->fee_rate - $input->fee_rate;
-	die "fee rate vastly differs from desired fee rate ($fee_diff)"
-		if abs($fee_diff) > 1;
+	if (defined $input->fee_rate) {
+		my $fee_diff = $tx->fee_rate - $input->fee_rate;
+		die "fee rate vastly differs from desired fee rate (difference: $fee_diff)"
+			if abs($fee_diff) > 1;
+	}
 
 	foreach my $output_index ($input->self_outputs->@*) {
 		die "no output $output_index"

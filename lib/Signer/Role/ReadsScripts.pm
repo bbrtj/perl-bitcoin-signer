@@ -43,7 +43,7 @@ sub get_last_script_args ($self)
 		;
 
 	my %args = (
-		fee_rate => $head->{tx}{fee_rate} // 1,
+		fee_rate => $head->{tx}{fee_rate},
 		($head->{tx}{change} ? (change => 1) : ()),
 		address_search_range => $max_address + 20,
 		inputs => [],

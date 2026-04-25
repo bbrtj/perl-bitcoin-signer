@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transaction>
+	<inputs>
+		<input index="0">ae637adeaef14bff5be2a5e2a056958ab4b166547aeca60523be4453dccd3d54</input>
+		<input index="1">ae637adeaef14bff5be2a5e2a056958ab4b166547aeca60523be4453dccd3d54</input>
+	</inputs>
+	<outputs>
+		<output value="96000" type="taproot">new_address</output>
+	</outputs>
+
+	<meta>
+		<prop name="prevouts">905f010000000000225120fd238d2a9875fddfeb4508e4e0d5d6a9828eba8568a8e890ac32db69c23633280a1e000000000000160014f352ea7d3089ae16442be10bcc2f42e34bbdb75c</prop>
+		<prop name="mnemonic_fixture">0</prop>
+		<prop name="mnemonic_account">1</prop>
+		<prop name="tx_hex">01000000000102543dcddc5344be2305a6ec7a5466b1b48a9556a0e2a5e25bff4bf1aede7a63ae0000000000fdffffff543dcddc5344be2305a6ec7a5466b1b48a9556a0e2a5e25bff4bf1aede7a63ae0100000000ffffffff01007701000000000022512035be7b81c8e336af64441f897eea22160e30de388465497b487ebaffa23da1dd0140b053c019614deb65889f514d28a42c4732db0ff1c5faf603ae116d36123326346d6f40bd1b26f89bcfee3bda5c31601de6c296cfb9789d8e92ac191c936b8d2f024730440220787d9d77b2d666911b515878dd8db9ec1c9d4f24470ea4b4d7f79cb1df8b6e3b022054d6c6c464c110f40c5981dbc86ee1fd93527a7a04d9b12aa734c2d66b8d48290121029da3b95504becf97e9c6a3aa94b12b975fe4d45699bc574542ada2369942294e00000000</prop>
+	</meta>
+</transaction>
+

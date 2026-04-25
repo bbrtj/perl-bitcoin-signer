@@ -26,7 +26,8 @@ sub _parse ($self, $file)
 	# segwit is used by default for backcompat
 	# (avoid changing transaction history in xml files)
 
-	my $fee = $root->at('fee_rate')->text;
+	my $fee = $root->at('fee_rate');
+	$fee = $fee->text if defined $fee;
 
 	my %skip = (
 		skip_addresses => {},

@@ -48,6 +48,6 @@ has param 'self_outputs' => (
 );
 
 has param 'fee_rate' => (
-	isa => PositiveNum->where(q{ $_ > 0 }),
+	isa => Maybe [PositiveNum],
 );
 

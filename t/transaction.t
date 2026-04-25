@@ -9,6 +9,9 @@ use SignerTest::Fixtures qw(test_mnemonics);
 use SignerTest::Sign;
 use Mojo::JSON qw(encode_json decode_json);
 
+use Bitcoin::Secp256k1;
+$Bitcoin::Secp256k1::FORCED_SCHNORR_AUX_RAND = "\x00" x 32;
+
 ################################################################################
 # This tests whether Transaction module works
 # Transaction fixture data is loaded from t/transactions subdirectories
@@ -54,6 +57,7 @@ foreach my $case (
 		basic
 		taproot
 		skip
+		multi
 	)
 	)
 {
